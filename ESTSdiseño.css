@@ -1,0 +1,282 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #ffffffff;
+    color: black ;
+}
+ h1 {
+    
+ }
+header {
+    display: center;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ffffffff;
+    color: black;
+    padding: 10px 20px;
+}
+
+header .logo {
+    display: center;
+    align-items: center;
+    
+}
+
+header img {
+    height: 40px;
+    margin-right: 10px;
+}
+
+nav ul {
+    
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    margin: 0;
+    padding: 15px;
+    color: black;
+    background-color: #bdbdffff;
+
+}
+
+nav a, nav button {
+    color: white;
+    text-decoration: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    background-color: #a2a2feff;
+    padding: 20px 20px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    
+}
+
+.section {
+    padding: 40px 20px;
+    text-align: center;
+}
+
+footer {
+    background-color: #718effff;
+    color: black;
+    padding: 20px;
+    text-align: center;
+}
+footer .social a {
+    margin: 0 10px;
+    color: black;
+    text-decoration: none;
+}
+
+/* Estilo menú desplegable */
+.dropdown {
+    position: absolute;
+    background-color: #a49fffff;
+    color: white;
+    padding: 10px 15px;
+    border: 15xp;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #a2a2feff;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    min-width: 150px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    z-index: 10;
+}
+
+.dropdown-menu li a {
+    display: block;
+    text-decoration: none;
+    background-color: #6c63ff;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.dropdown-menu li a:hover {
+    background-color: #6c63ff;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+    background-color: #6c63ff;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+
+
+.nav-right {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+}
+
+
+
+.nav-right button {
+    background-color: #6c63ff;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.curso-card {
+    
+    position: relative;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    overflow: hidden;
+    width: 300px;
+    padding-bottom: 15px;
+    font-family: Arial, sans-serif;
+}
+
+.curso-container {
+    display: flex;
+    justify-content: center;  /* Centra horizontalmente */
+    align-items: center;      /* Centra verticalmente */
+    min-height: 100vh;      
+    background-color: ;
+}
+
+.etiqueta-descuento {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: #ff4b4b;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+
+.curso-img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.curso-info {
+    padding: 15px;
+}
+
+.curso-info h3 {
+    font-size: 1rem;
+    margin-bottom: 10px;
+}
+
+.detalles {
+    font-size: 0.9rem;
+    color: #555;
+    margin-bottom: 5px;
+}
+
+.alumnos {
+    font-size: 0.9rem;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+.precio {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+}
+
+.precio-original {
+    text-decoration: line-through;
+    color: #888;
+    margin-right: 10px;
+}
+
+.precio-descuento {
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.logo-curso {
+    height: 25px;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.botones {
+    display: flex;
+    gap: 10px;
+}
+
+.btn-pdf {
+    border: 2px solid #ff4b4b;
+    background: transparent;
+    color: #ff4b4b;
+    padding: 8px 15px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.btn-ver {
+    background: #ff4b4b;
+    border: none;
+    color: white;
+    padding: 8px 15px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.btn-pdf:hover {
+    background: #ff4b4b;
+    color: white;
+}
+
+.btn-ver:hover {
+    background: #cc0000;
+}
+
+.whatsapp-float {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #25D366;
+    border-radius: 50%;
+    padding: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    z-index: 9999;
+    transition: transform 0.2s ease-in-out;
+}
+
+.whatsapp-float img {
+    width: 40px;
+    height: 40px;
+}
+
+.whatsapp-float:hover {
+    transform: scale(1.1);
+}
