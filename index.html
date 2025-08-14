@@ -28,13 +28,64 @@
 <nav>
 
     <ul>
-        <li><a href="#inicio">Inicio</a></li> 
+        <li><a href="index.html">Inicio</a></li> 
         <li><a href="#diplomados">Diplomados</a></li>
         <li><a href="#cursos">Cursos</a></li> 
         <li><a href="#horarios">Horarios</a></li> 
-        <li><a href="#contacto">Contacto</a></li> 
+        <li><a href="#contacto">Contacto</a></li>
+        <li><a href="ESTAsomos.html">¿Qué Somos?</a></li>
      </ul>
 </nav>
+
+<div class="search-bar">
+    <select id="categorySelect">
+        <option value="todos">Todas las acciones formativas</option>
+        <option value="curso">Cursos</option>
+        <option value="diplomado">Diplomados</option>
+    </select>
+    <input type="text" id="searchInput" placeholder="¿Qué quieres estudiar?">
+    <button id="searchBtn">Buscar</button>
+</div>
+
+<div class="cards-container">
+   
+ <div class="curso-card" data-type="curso">
+    <div style="position: relative;">
+        <img src="autismo.png" alt="Curso Autismo">
+        <span class="badge">Beca - 15%</span>
+    </div>
+    <div class="curso-info">
+        <h3>Curso Terapia Ocupacional Autismo</h3>
+        <div class="curso-detalles">Online · 300h</div>
+        <div>
+            <span class="precio">357 €</span>
+            <span class="precio-anterior">420 €</span>
+        </div>
+        <div class="botones">
+            <button class="btn btn-pdf">Temario PDF</button>
+            <button class="btn btn-vermas">Ver más</button>
+        </div>
+    </div>
+</div>
+
+
+    
+    <div class="curso-card" data-type="diplomado">
+        <span class="badge">Beca - 10%</span>
+        <img src="pscologia.png" alt="Imagen diplomado">
+       <div class="curso-info">
+        <h3>Diplomado en Psicología Clínica</h3>
+        <div class="curso-detalles">Online · 300h</div>
+        <div>
+            <span class="precio">357 €</span>
+            <span class="precio-anterior">420 €</span>
+        </div>
+           <div class="botones">
+            <button class="btn btn-pdf">Temario PDF</button>
+            <button class="btn btn-vermas">Ver más</button>
+        </div>
+    </div>
+</div>
 
 
     </header>
@@ -51,7 +102,7 @@
         </div>
     </section>
 
-<div class="curso-container">
+<div class="curso-container"  data-type="diplomado">
 
     <div class="curso-card">
     <span class="etiqueta-descuento">Beca - 15%</span>
@@ -59,7 +110,7 @@
 
 
     <div class="curso-info">
-        <h3><b>CURSO RECREACION Y DIVERCION:</b> Curso Recreacion  ejemplo</h3>
+        <h3><b>CURSO RECREACION Y DIVERSION:</b> Curso Recreación  ejemplo</h3>
         <p class="detalles">
             <span>📍 Online</span> • 
             <span>⏱ 300h</span>

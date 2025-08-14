@@ -1,11 +1,14 @@
-document.getElementById("loginBtn").addEventListener("click", function() {
-    alert("Aquí irá el login con conexión al backend.");
-});
+document.getElementById("categorySelect").addEventListener("change", filterCards);
+document.getElementById("searchBtn").addEventListener("click", filterCards);
 
-// Ejemplo para cargar diplomados (se puede conectar a API después)
-const diplomados = ["Diplomado en Educación", "Diplomado en Tecnología", "Diplomado en Gestión"];
-document.getElementById("diplomados-list").innerHTML = diplomados.map(d => `<p>${d}</p>`).join("");
+function filterCards() {
+    let category = document.getElementById("categorySelect").value;
+    let searchText = document.getElementById("searchInput").value.toLowerCase();
+    let cards = document.querySelectorAll(".curso-card");
 
-// Ejemplo para cursos
-const cursos = ["Curso de Excel", "Curso de Programación", "Curso de Liderazgo"];
-document.getElementById("cursos-list").innerHTML = cursos.map(c => `<p>${c}</p>`).join("");
+    cards.forEach(card => {
+        let matchesCategory = (category === "todos" || card.dataset.type === category);
+        let matchesSearch = card.querySelector("h3").textContent.toLowerCase().includes(searchText);
+        card.style.display = (matchesCategory && matchesSearch) ? "block" : "none";
+    });
+}
