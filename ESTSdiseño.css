@@ -156,6 +156,18 @@ footer .social a {
     font-family: Arial, sans-serif;
 }
 
+.curso-card2 {
+    
+    position: relative;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    overflow: hidden;
+    width: 300px;
+    padding-bottom: 15px;
+    font-family: Arial, sans-serif;
+}
+
 .curso-container {
     display: flex;
     justify-content: center;  /* Centra horizontalmente */
@@ -352,7 +364,24 @@ footer .social a {
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
+.curso-card2 {
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    overflow: hidden;
+    display: flex;
+    gap: 15px;
+    padding: 15px;
+    width: 400px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
 .curso-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+}
+
+.curso-card2:hover {
     transform: translateY(-3px);
     box-shadow: 0 6px 16px rgba(0,0,0,0.12);
 }
@@ -363,7 +392,12 @@ footer .social a {
     object-fit: cover;
     border-radius: 10px;
 }
-
+.curso-card2 img {
+    width: 140px;
+    height: 140px;
+    object-fit: cover;
+    border-radius: 10px;
+}
 .curso-info {
     flex: 1;
     display: flex;
@@ -457,4 +491,220 @@ footer .social a {
     border: 15xp;
     cursor: pointer;
     
+}
+.cursos-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.curso-card {
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    display: flex;
+    gap: 15px;
+    padding: 15px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.curso-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+}
+
+.curso-card img {
+    width: 140px;
+    height: 140px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.curso-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.curso-info h3 {
+    font-size: 18px;
+    margin: 0;
+    color: #333;
+    font-weight: bold;
+}
+
+.curso-detalles {
+    font-size: 14px;
+    color: #555;
+}
+
+.precio {
+    font-size: 18px;
+    font-weight: bold;
+    color: #000;
+}
+
+.precio-anterior {
+    text-decoration: line-through;
+    color: gray;
+    font-size: 13px;
+    margin-left: 5px;
+}
+
+.botones {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.btn {
+    padding: 8px 15px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.btn-vermas {
+    background-color: #6c63ff;
+    color: white;
+}
+
+.btn-vermas:hover {
+    background-color: #574bff;
+    transform: scale(1.05);
+}
+
+.btn-pdf {
+    background-color: #ff4b4b;
+    color: white;
+}
+
+.btn-pdf:hover {
+    background-color: #e04141;
+    transform: scale(1.05);
+}
+
+.badge {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: red;
+    color: white;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: bold;
+}
+.cursos-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.curso-card {
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    display: flex;
+    gap: 15px;
+    padding: 15px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.curso-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+}
+
+.curso-card img {
+    width: 140px;
+    height: 140px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.curso-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.curso-info h3 {
+    font-size: 18px;
+    margin: 0;
+    color: #333;
+    font-weight: bold;
+}
+
+.curso-detalles {
+    font-size: 14px;
+    color: #555;
+}
+
+.precio {
+    font-size: 18px;
+    font-weight: bold;
+    color: #000;
+}
+
+.precio-anterior {
+    text-decoration: line-through;
+    color: gray;
+    font-size: 13px;
+    margin-left: 5px;
+}
+
+.botones {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.btn {
+    padding: 8px 15px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.btn-vermas {
+    background-color: #6c63ff;
+    color: white;
+}
+
+.btn-vermas:hover {
+    background-color: #574bff;
+    transform: scale(1.05);
+}
+
+.btn-pdf {
+    background-color: #ff4b4b;
+    color: white;
+}
+
+.btn-pdf:hover {
+    background-color: #e04141;
+    transform: scale(1.05);
+}
+
+.badge {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: red;
+    color: white;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: bold;
 }
