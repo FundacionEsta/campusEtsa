@@ -47,7 +47,8 @@ nav a, nav button {
     border: none;
     cursor: pointer;
     background-color: rgb(184, 0, 0);
-    padding: 20px 20px;
+    padding: 
+     20px;
     transition: background-color 0.3s ease, color 0.3s ease;
     
 }
@@ -446,11 +447,11 @@ footer .social a {
 .mision {
     
     top: 100px;
-    font-size: medium;
+    font-size: small;
     border-radius: 20px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.08);
     position: center;
-    background-color: #a49fffff;
+    background-color: rgb(141, 0, 0);
     color: white;
     padding: 10px 15px;
     border: 15xp;
