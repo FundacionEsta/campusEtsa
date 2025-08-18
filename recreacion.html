@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=0.4">
+    <title>Campus ETSA</title>
+    <autor>David Mendez</autor>
+    <link rel="stylesheet" href="ESTSdiseño.css">
+</head>
+<body>
+    <header>
+
+   <li class="dropdown">
+            <a href="#">=</a><p>Menu</p>
+            <ul class="dropdown-menu">
+                <li><a href="#calificaciones">Calificaciones</a></li>
+                <li><a href="#calendario">Calendario</a></li>
+                <li><a href="#novedades">Novedades</a></li>
+            </ul>
+        </li>
+        <div class="logo">
+            <center><img src="logo.png" alt="Logo ETSA" height="300" width="50"> </center>
+            <center> <h2>Fundación ETSA</h2></center>
+        </div>
+        <ul class="nav-right">
+        <li><button id="loginBtn">Login</button></li>
+    </ul>
+
+<nav>
+
+    <ul>
+        <li><a href="index.html">Volver Inicio</a></li> 
+        <li><a href="#curso">Cursos</a></li> 
+        <li><a href="#horarios">Horarios</a></li> 
+        <li><a href="#contacto">Contacto</a></li>
+         <ul class="dropdown-menu">
+                <li><a href="#calificaciones">Calificaciones</a></li>
+                <li><a href="#calendario">Calendario</a></li>
+                <li><a href="#novedades">Novedades</a></li>
+            </ul>
+        <li><a href="ESTAsomos.html">¿Qué Somos?</a></li>
+     </ul>
+</nav>
+
+
+
+
+
+
+    </header>
+
+    <section id="inicio" class="section">
+        <h2>Bienvenido al Campus ETSA</h2>
+        <p>Tu portal de acceso a diplomados, cursos y clases abiertas.</p>
+    </section>
+
+ 
+
+   
+<div class="cursos-container2">
+   <center><h2>Curso</h2></center>
+
+     <div class="curso-card3">
+        <div style="position: relative;">
+         <span class="etiqueta-descuento">Beca - 15%</span>
+            <img class="curso-img" src="recreacion.png" alt="Curso imagen">
+        </div>
+         <div class="curso-info">
+            <h3><b>CURSO RECREACION CON PROPOCITO:</b></h3>
+            <p class="detalles">
+                <span>📍 Online/Semi-presencial / Presencial</span> • 
+                <span>⏱ 50h</span>
+        </p>
+        <p class="alumnos">👥 0 cantidad de alumnos que realizaron el curso</p>
+        <p class="alumnos">👥 0 cantidad de alumnos Actuales</p>
+        
+        <p class="precio">
+            <span class="precio-original">100.000$</span> 
+            <span class="precio-descuento">85.000$</span>
+        </p>
+
+        
+        <div class="botones">
+            <button class="btn-pdf">Temario PDF</button>
+        </div>
+     </div>
+  </div>
+ <body>
+  <div class="carrusel">
+    <button class="flecha" id="flecha-izq">&#8592;</button>
+    <img id="imagen-carrusel" src="recreacion1.png" alt="Imagen carrusel">
+    <button class="flecha" id="flecha-der">&#8594;</button>
+  </div>
+<script>
+    const imagenes = ["recreacion1.png", "recreacion2.png", "recreacion3.png"]; 
+    let indice = 0;
+
+    const img = document.getElementById("imagen-carrusel");
+    const flechaIzq = document.getElementById("flecha-izq");
+    const flechaDer = document.getElementById("flecha-der");
+
+    flechaIzq.addEventListener("click", () => {
+      indice = (indice - 1 + imagenes.length) % imagenes.length;
+      img.src = imagenes[indice];
+    });
+
+    flechaDer.addEventListener("click", () => {
+      indice = (indice + 1) % imagenes.length;
+      img.src = imagenes[indice];
+    });
+  </script>
+  
+
+</div>
+
+
+        
+    <section id="horarios" class="section">
+        <h2>Horarios</h2>
+        <div id="horarios-tabla"></div>
+    </section>
+
+    <footer>
+        <div class="social">
+            <a href="https://facebook.com" target="_blank">Facebook</a>
+            <a href="https://instagram.com" target="_blank">Instagram</a>
+            <a href="https://wa.me/573000000000" target="_blank">WhatsApp</a>
+        </div>
+        <p>&copy; 2025 Fundación ETSA</p>
+    </footer>
+
+    <script src="ESTAscript.js"></script>
+    <a href="" target="_blank" class="whatsapp-float">
+    <img src="whap.png" alt="WhatsApp">
+</a>
+
+</body>
+</html>

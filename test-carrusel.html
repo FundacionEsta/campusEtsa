@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Carrusel Simple</title>
+  <style>
+    .carrusel {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 50px;
+    }
+
+    .carrusel img {
+      width: 400px;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    }
+
+    .flecha {
+      background: black;
+      color: white;
+      border: none;
+      font-size: 2rem;
+      padding: 10px;
+      cursor: pointer;
+      border-radius: 50%;
+      transition: background 0.3s;
+    }
+
+    .flecha:hover {
+      background: #444;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="carrusel">
+    <button class="flecha" id="flecha-izq">&#8592;</button>
+    <img id="imagen-carrusel" src="recreacion1.png" alt="Imagen carrusel">
+    <button class="flecha" id="flecha-der">&#8594;</button>
+  </div>
+
+  <script>
+    const imagenes = ["recreacion1.png", "recreacion2.png", "recreacion3.png"]; 
+    let indice = 0;
+
+    const img = document.getElementById("imagen-carrusel");
+    const flechaIzq = document.getElementById("flecha-izq");
+    const flechaDer = document.getElementById("flecha-der");
+
+    flechaIzq.addEventListener("click", () => {
+      indice = (indice - 1 + imagenes.length) % imagenes.length;
+      img.src = imagenes[indice];
+    });
+
+    flechaDer.addEventListener("click", () => {
+      indice = (indice + 1) % imagenes.length;
+      img.src = imagenes[indice];
+    });
+  </script>
+
+</body>
+</html>
