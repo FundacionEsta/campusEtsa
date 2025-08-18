@@ -36,17 +36,17 @@ nav ul {
     margin: 0;
     padding: 20px;
     color: black;
-    background-color: rgb(150, 15, 0);
+    background: linear-gradient(90deg, #84f8fc 0%, #bc85fa 100%);
 
 }
 
 nav a, nav button {
-    color: white;
+    color: rgb(0, 0, 0);
     text-decoration: none;
     background: none;
     border: none;
     cursor: pointer;
-    background-color: rgb(219, 3, 3);
+    background: linear-gradient(90deg, #84f8fc 0%, #fa85fa 100%);
     padding: 
      20px;
     transition: background-color 0.3s ease, color 0.3s ease;
@@ -60,7 +60,7 @@ nav a, nav button {
 }
 
 footer {
-    background-color:  rgb(184, 0, 0);
+    background: linear-gradient(90deg, #84f8fc 0%, #fa85fa 100%);
     color: black;
     padding: 20px;
     text-align: center;
@@ -74,8 +74,8 @@ footer .social a {
 /* Estilo menú desplegable */
 .dropdown {
     position: absolute;
-    background-color:  rgb(184, 0, 0);
-    color: white;
+    background: linear-gradient(90deg, #84f8fc 0%, #fa85fa 100%);
+    color: rgb(255, 255, 255);
     padding: 10px 15px;
     border: 15xp;
     cursor: pointer;
@@ -87,7 +87,7 @@ footer .social a {
     position: absolute;
     top: 100%;
     left: 0;
-    background-color: rgb(184, 0, 0);
+    background-color: rgb(81, 220, 255);
     list-style: none;
     padding: 0;
     margin: 0;
@@ -99,8 +99,8 @@ footer .social a {
 .dropdown-menu li a {
     display: block;
     text-decoration: none;
-    background-color: rgb(184, 0, 0);
-    color: white;
+    background: linear-gradient(90deg, #84f8fc 0%, #fa85fa 100%);
+    color: rgb(0, 0, 0);
     padding: 10px 15px;
     border: none;
     cursor: pointer;
@@ -108,7 +108,7 @@ footer .social a {
 }
 
 .dropdown-menu li a:hover {
-    background-color:  rgb(184, 0, 0);
+    background-color:  rgb(253, 190, 255);
     color: white;
     padding: 10px 15px;
     border: none;
@@ -118,7 +118,7 @@ footer .social a {
 
 .dropdown:hover .dropdown-menu {
     display: block;
-    background-color: rgb(184, 0, 0);
+    background-color: rgb(251, 141, 255);
     color: white;
     padding: 10px 15px;
     border: none;
@@ -137,7 +137,7 @@ footer .social a {
 
 
 .nav-right button {
-    background-color:  rgb(184, 0, 0);
+    background: linear-gradient(90deg, #84f8fc 0%, #fa85fa 100%);
     color: white;
     padding: 10px 15px;
     border: none;
@@ -181,8 +181,8 @@ footer .social a {
     position: absolute;
     top: 10px;
     left: 10px;
-    background: #ff4b4b;
-    color: white;
+    background: linear-gradient(90deg, #84f8fc 0%, #bcfd80 100%);
+    color: rgb(105, 105, 105);
     padding: 5px 10px;
     border-radius: 20px;
     font-size: 0.9rem;
@@ -243,18 +243,9 @@ footer .social a {
     gap: 10px;
 }
 
-.btn-pdf {
-    border: 2px solid #ff4b4b;
-    background: transparent;
-    color: #ff4b4b;
-    padding: 8px 15px;
-    border-radius: 20px;
-    cursor: pointer;
-    font-weight: bold;
-}
 
 .btn-ver {
-    background: #ff4b4b;
+    background: linear-gradient( 90deg, rgb(66, 94, 255) 0%, rgb(133, 248, 223) 100%);
     border: none;
     color: white;
     padding: 8px 15px;
@@ -263,13 +254,10 @@ footer .social a {
     font-weight: bold;
 }
 
-.btn-pdf:hover {
-    background: #ff4b4b;
-    color: white;
-}
+
 
 .btn-ver:hover {
-    background: #cc0000;
+    background: #0e2397;
 }
 
 .whatsapp-float {
@@ -351,7 +339,7 @@ footer .social a {
     flex-wrap: wrap;
     gap: 20px;
     margin-top: auto;
-    background-color:  #cbcbcb;
+    background:linear-gradient(90deg, #f187ff 0%, #ff2eff 100%);
 }
 
 .curso-card {
@@ -458,15 +446,7 @@ footer .social a {
     transform: scale(1.05);
 }
 
-.btn-pdf {
-    background-color: #ff4b4b;
-    color: white;
-}
 
-.btn-pdf:hover {
-    background-color: #6c63ff;
-    transform: scale(1.05);
-}
 
 .badge {
     position: absolute;
@@ -577,12 +557,17 @@ footer .social a {
 }
 
 .btn-pdf {
-    background-color: #ff4b4b;
+    background: linear-gradient(90deg,#f86c6c 0%, #ff0000 100%); ;
     color: white;
+    border: 2px solid #ff4b4b;
+    padding: 8px 15px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: bold;
 }
 
 .btn-pdf:hover {
-    background-color: #e04141;
+    background-color: #ff1010;
     transform: scale(1.05);
 }
 
@@ -685,15 +670,7 @@ footer .social a {
     transform: scale(1.05);
 }
 
-.btn-pdf {
-    background-color: #ff4b4b;
-    color: white;
-}
 
-.btn-pdf:hover {
-    background-color: #e04141;
-    transform: scale(1.05);
-}
 
 .badge {
     position: absolute;
