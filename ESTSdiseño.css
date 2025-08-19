@@ -1,5 +1,5 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Times New Roman', Times, serif;
     margin: 0;
     padding: 0;
     background-color: #ffffffff;
@@ -13,17 +13,22 @@ header {
     background-color: #ffffffff;
     color: black;
     padding: 10px 20px;
+    font-family: 'Times New Roman', Times, serif;
 }
 
-header .logo {
-    display: center;
-    align-items: center;
+.logo {
+    display: flex;
+    justify-content: center;
+    gap: 16px; /* Espacio entre imagen y texto */
+    font-family: 'Times New Roman', Times, serif;
     
 }
 
-header img {
+.logo img {
     height: 40px;
-    margin-right: 10px;
+    width: auto;       /* Mantiene la proporción original */
+    vertical-align: middle;
+    margin-right: 8px; /* Espacio entre imagen y texto */
 }
 
 nav ul {
@@ -47,11 +52,16 @@ nav a, nav button {
     border: none;
     cursor: pointer;
     background: linear-gradient(90deg, #84f8fc 0%, #fa85fa 100%);
-    padding: 
-     20px;
+    padding: 20px;
     transition: background-color 0.3s ease, color 0.3s ease;
     overflow: hidden;
     
+}
+nav ul img {
+    height: 40px;
+    width: auto;
+    vertical-align: middle;
+    margin-right: 8px;
 }
 
 .section {
@@ -71,14 +81,27 @@ footer .social a {
     text-decoration: none;
 }
 
+.dropdown a {
+    display: flex;
+    align-items: center;
+    gap: 8px; /* Espacio entre = y Menu */
+    color: black;
+    text-decoration: turquoise;
+    list-style: none;
+    font-size: 1.2rem;
+    font-family: 'Times New Roman', Times, serif;
+}
+
 /* Estilo menú desplegable */
 .dropdown {
     position: absolute;
+    display: flex;
     background: linear-gradient(90deg, #84f8fc 0%, #fa85fa 100%);
-    color: rgb(255, 255, 255);
-    padding: 10px 15px;
+    color: rgb(0, 0, 0);
+    padding: 7px 10px; 
+    list-style: none;
     border: 15xp;
-    cursor: pointer;
+    top: 10px;
     border-radius: 5px;
 }
 
