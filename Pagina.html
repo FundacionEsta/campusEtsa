@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fundacion Etsa</title>
+  <link rel="stylesheet" href="Diseño.css">
+  <style>
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px;
+      background: #f1f1f1;
+    }
+    nav .left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    nav .left img {
+      height: 40px;
+    }
+    nav .buttons button {
+      margin-left: 10px;
+      padding: 5px 10px;
+    }
+
+    /* Estilos del botón flotante WhatsApp */
+    .whatsapp {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #25d366;
+      border-radius: 50%;
+      padding: 12px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+      z-index: 1000;
+      transition: transform 0.2s;
+    }
+    .whatsapp img {
+      width: 40px;
+      height: 40px;
+    }
+    .whatsapp:hover {
+      transform: scale(1.1);
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    Descarga Etsa APP. Más de 700 cursos te están esperando con tu suscripción.
+    <button>Saber más</button>
+  </header>
+
+  <nav>
+    <div class="left">
+      <span class="menu-icon">☰</span>
+      <span>Menú</span>
+      <div class="logo">
+        <img src="https://www.euroinnova.com/img/logo-euroinnova.png" alt="Logo">
+        <span><b>FUNDACION ETSA</b></span>
+      </div>
+    </div>
+    <div class="buttons">
+      <button class="btn-info">Solicitar información</button>
+      <button class="btn-login">Login</button>
+    </div>
+  </nav>
+
+  <div class="menu">
+    <a href="#">Cursos <span class="online">ONLINE</span></a>
+    <a href="#">Másteres</a>
+    <a href="#">Licenciaturas</a>
+    <a href="#">Doctorados</a>
+    <a href="#">Suscripción MYLXP</a>
+    <a href="#">Webinars y podcast</a>
+  </div>
+
+  <!-- ===== Buscador Principal ===== -->
+  <section class="buscador">
+    <h2>¿Qué te interesa estudiar?</h2>
+    <form>
+      <input type="text" placeholder="Ejemplo: programación, marketing, idiomas...">
+      <select>
+        <option value="">Opciones formativas</option>
+        <option value="cursos">Cursos</option>
+        <option value="masters">Másteres</option>
+        <option value="licenciaturas">Licenciaturas</option>
+        <option value="doctorados">Doctorados</option>
+        <option value="webinars">Webinars y Podcast</option>
+      </select>
+      <button type="submit">Buscar</button>
+    </form>
+  </section>
+
+  <!-- ===== Sección Facultades ===== -->
+  <section class="facultades">
+    <h2>Facultades</h2>
+    <p>Encuentra el curso o máster que más se adapta a ti</p>
+    <div class="facultades-grid">
+      <div class="facultad-card">Arquitectura y Diseño</div>
+      <div class="facultad-card">Arte</div>
+      <div class="facultad-card">Ciencias</div>
+      <div class="facultad-card">Deporte</div>
+      <div class="facultad-card">Derecho</div>
+      <div class="facultad-card">Business Management</div>
+      <div class="facultad-card">Inversiones y Finanzas</div>
+      <div class="facultad-card">Docencia y Formación para el profesorado</div>
+      <div class="facultad-card">Pedagogía Terapéutica</div>
+      <div class="facultad-card">Trabajo Social</div>
+      <div class="facultad-card">Enfermería</div>
+      <div class="facultad-card">Farmacia</div>
+      <div class="facultad-card">Fisioterapia</div>
+      <div class="facultad-card">Idiomas</div>
+      <div class="facultad-card">Programación y desarrollo de software</div>
+      <div class="facultad-card">Nuevas tecnologías</div>
+      <div class="facultad-card">Ciencia de datos e Inteligencia artificial</div>
+      <div class="facultad-card">Ciberseguridad y Cloud computing</div>
+      <div class="facultad-card">Marketing digital y Comunicación</div>
+      <div class="facultad-card">Medicina</div>
+      <div class="facultad-card">Nutrición</div>
+      <div class="facultad-card">Profesiones y oficios</div>
+      <div class="facultad-card">Psicología</div>
+      <div class="facultad-card">Turismo</div>
+      <div class="facultad-card">Veterinaria</div>
+      <div class="facultad-card">Seguridad y PRL</div>
+      <div class="facultad-card">Recursos Humanos</div>
+      <div class="facultad-card">Ingeniería</div>
+    </div>
+  </section>
+
+  <!-- ===== Sección de Cursos Ejemplo ===== -->
+  <section class="cursos">
+    <h2>Cursos Destacados</h2>
+    <div class="cursos-grid">
+      <div class="curso-card">
+        <img src="https://img.freepik.com/vector-premium/icono-marketing-digital_1188135-2461.jpg" alt="Curso Marketing Digital">
+        <h3>Curso de Marketing Digital</h3>
+        <p>Aprende estrategias de SEO, redes sociales y publicidad online.</p>
+        <button>Ver más</button>
+      </div>
+      <div class="curso-card">
+        <img src="https://img.freepik.com/vector-premium/icono-lenguaje-programacion-python_1188135-1355.jpg" alt="Curso Python">
+        <h3>Curso de Programación en Python</h3>
+        <p>Domina uno de los lenguajes más usados en ciencia de datos y desarrollo web.</p>
+        <button>Ver más</button>
+      </div>
+      <div class="curso-card">
+        <img src="https://img.freepik.com/vector-premium/icono-negocios-empresa_1188135-2454.jpg" alt="Curso Gestión Empresarial">
+        <h3>Curso de Gestión Empresarial</h3>
+        <p>Conoce las claves para administrar y dirigir empresas exitosas.</p>
+        <button>Ver más</button>
+      </div>
+      <div class="curso-card">
+        <img src="https://img.freepik.com/vector-premium/icono-idioma-ingles_1188135-2411.jpg" alt="Curso Inglés">
+        <h3>Curso de Inglés B2</h3>
+        <p>Mejora tu nivel de inglés para estudios, trabajo y viajes.</p>
+        <button>Ver más</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Botón flotante WhatsApp -->
+  <a href="https://wa.me/573001112233" class="whatsapp" target="_blank">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+  </a>
+
+</body>
+</html>

@@ -1,2 +1,0 @@
-# campus-etsa-fd
-frontend
