@@ -18,5 +18,8 @@ document.getElementById("recreacion").addEventListener("click", function() {
     window.location.href = "recreacion.html";
      });
 
-    
+document.getElementById("IA").addEventListener("click", function() {
+    window.location.href = "IA.html";
+     });
+
 
