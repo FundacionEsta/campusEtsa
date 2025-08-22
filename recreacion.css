@@ -595,3 +595,27 @@ footer .social a {
     .flecha:hover {
       background: #444;
     }
+
+       /* ===== menulogin ===== */
+
+    .dropdown1-menu {
+  display: none;
+  position: absolute;
+  background-color: white;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+  border-radius: 8px;
+  padding: 8px 0;
+  z-index: 100;
+}
+
+.dropdown1-menu a {
+  display: block;
+  padding: 10px;
+  color: black;
+  text-decoration: none;
+}
+
+.dropdown1-menu a:hover {
+  background-color: #f1f1f1;
+}
