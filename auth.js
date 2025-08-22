@@ -36,3 +36,24 @@ window.onclick = function (event) {
   }
 };
 
+if (inscribirseBtn) {
+  inscribirseBtn.onclick = () => {
+    if (loggedUser) {
+      // Usuario logeado → redirigir a la página de inscripción
+      window.location.href = "inscrirecre.html";
+    } else {
+      // Usuario no logeado → redirigir a login
+      alert("Debes iniciar sesión primero");
+      window.location.href = "login.html";
+    }
+  };
+}
+
+// Cierra el menú si haces click fuera de él
+window.onclick = function (event) {
+  if (!event.target.matches("#loginboton")) {
+    userMenu.style.display = "none";
+  }
+};
+
+

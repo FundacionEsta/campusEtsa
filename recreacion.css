@@ -442,6 +442,21 @@ footer .social a {
     margin-top: 10px;
 }
 
+
+.btn-inscri {
+    background: linear-gradient(90deg, #84f8fc 0%, #003cff 100%);
+    color: rgb(255, 255, 255);
+    padding: 10px 15px;
+    border: 2px solid #84f8fc;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.btn-inscri:hover {
+    background-color: #a0f0e0;
+    transform: scale(1.05);
+}
 .btn {
     padding: 8px 15px;
     border-radius: 8px;
