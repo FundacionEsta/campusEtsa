@@ -1,0 +1,293 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f9f9f9; /* fallback */
+  background: linear-gradient(135deg, #fffafd 0%, #f7f2ff 50%, #fde7ef 100%);
+}
+
+/* ===== Header ===== */
+header {
+  background-color: #caa7da; /* pastel fallback */
+  background: linear-gradient(90deg, #b98ad2, #d8b9ec);
+  color: white;
+  padding: 10px;
+  text-align: center;
+  font-size: 14px;
+}
+header button {
+  background: white;
+  border: none;
+  border-radius: 15px;
+  padding: 5px 15px;
+  margin-left: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+header button:hover {
+  background: #efe2f6;
+  transform: scale(1.05);
+}
+
+/* ===== Nav ===== */
+nav {
+  background-color: #fff; /* fallback */
+  background: linear-gradient(90deg, #ffffff, #fbf5ff);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  border-bottom: 1px solid #ddd;
+}
+nav .left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: bold;
+  cursor: pointer;
+}
+nav .menu-icon {
+  font-size: 30px;
+}
+nav .logo {
+  display: flex;
+  align-items: center;
+}
+nav .logo img {
+  height: 40px;
+  margin-right: 10px;
+}
+nav .buttons {
+  display: flex;
+  gap: 10px;
+}
+nav .buttons button {
+  border: none;
+  border-radius: 20px;
+  padding: 6px 15px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+nav .buttons button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+}
+.btn-info {
+  /* pastel con mejor contraste */
+  background: linear-gradient(90deg, #f7c8d0, #fde1e6);
+  color: #2c2c2c;
+}
+.btn-login {
+  /* si prefieres mantener negro, deja estas dos líneas */
+  background-color: #000;
+  color: #fff;
+  /* Opción pastel alternativa (comenta las dos de arriba y descomenta esta):
+     background: linear-gradient(90deg, #88bdbc, #a8d7d4); color:#fff; */
+}
+
+/* ===== Menú ===== */
+.menu {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  padding: 15px;
+  background: #fff; /* fallback */
+  background: linear-gradient(90deg, #ffffff, #faf4f7);
+  border-bottom: 1px solid #ddd;
+  font-weight: bold;
+}
+.menu a {
+  text-decoration: none;
+  color: #444;
+  position: relative;
+  padding: 5px 0;
+  transition: color 0.3s ease;
+}
+.menu a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0%;
+  height: 2px;
+  background: #d08a98; /* antes #a54c58 -> pastel */
+  transition: width 0.3s ease;
+}
+.menu a:hover {
+  color: #b98ad2; /* lila pastel visible */
+}
+.menu a:hover::after {
+  width: 100%;
+}
+.menu a:active {
+  transform: scale(0.95);
+}
+.menu .online {
+  background: linear-gradient(90deg, #f7a6b5, #fbcad2);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 10px;
+  font-size: 12px;
+  margin-left: 5px;
+}
+
+/* ===== Buscador ===== */
+.buscador {
+  background: #f2f2f2; /* fallback */
+  background: linear-gradient(120deg, #ffe3eb, #f7c8d0);
+  padding: 40px 20px;
+  text-align: center;
+}
+.buscador h2 {
+  margin-bottom: 20px;
+  color: #333;
+}
+.buscador form {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.buscador input, 
+.buscador select {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  min-width: 200px;
+  font-size: 14px;
+  background-color: #fff;
+}
+.buscador button {
+  background: #d08a98; /* fallback */
+  background: linear-gradient(90deg, #d08a98, #e7a7b3);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+.buscador button:hover {
+  background: linear-gradient(90deg, #a67ab7, #c7a0d9); /* tono lila en hover */
+}
+
+/* ===== Sección Cursos ===== */
+.cursos {
+  padding: 40px 20px;
+  max-width: 1200px;
+  margin: auto;
+  background: linear-gradient(180deg, #ffffff, #f6effb);
+}
+.cursos h2 {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #333;
+}
+.cursos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+.curso-card {
+  background: #fff; /* fallback */
+  background: linear-gradient(180deg, #ffffff, #f8ecf9);
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+.curso-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+.curso-card img {
+  width: 100%;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+.curso-card h3 {
+  margin: 0 0 10px;
+  font-size: 18px;
+  color: #6d476c; /* conservado como en tu diseño */
+}
+.curso-card p {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 15px;
+}
+.curso-card button {
+  background: #d08a98; /* fallback */
+  background: linear-gradient(90deg, #f7a6b5, #fbcad2);
+  color: #fff;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+.curso-card button:hover {
+  background: linear-gradient(90deg, #a67ab7, #c7a0d9);
+}
+
+/* ===== Sección Facultades ===== */
+.facultades {
+  padding: 40px 20px;
+  max-width: 1200px;
+  margin: auto;
+  text-align: center;
+  background: linear-gradient(135deg, #fafafa, #f5f0fa);
+}
+.facultades h2 {
+  color: #333;
+  margin-bottom: 10px;
+}
+.facultades p {
+  color: #666;
+  margin-bottom: 30px;
+}
+.facultades-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 15px;
+}
+.facultad-card {
+  background: #fff; /* fallback */
+  background: linear-gradient(145deg, #ffffff, #fdf5f6);
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  padding: 15px;
+  font-weight: bold;
+  color: #6d476c; /* conservado */
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+.facultad-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 18px rgba(0,0,0,0.15);
+  background: linear-gradient(145deg, #f8ecf9, #ffffff);
+}
+
+
+   
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  background-color: white;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+  border-radius: 8px;
+  padding: 8px 0;
+  z-index: 100;
+}
+
+.dropdown-menu a {
+  display: block;
+  padding: 10px;
+  color: black;
+  text-decoration: none;
+}
+
+.dropdown-menu a:hover {
+  background-color: #f1f1f1;
+}
