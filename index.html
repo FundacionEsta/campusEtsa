@@ -2,179 +2,183 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=0.5">
-  <title>Fundacion Etsa</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fundación Etsa - Diseño Mejorado</title>
   <link rel="stylesheet" href="Diseño.css">
-  <style>
-    nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 10px;
-      background: #f1f1f1;
-    }
-    nav .left {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-    nav .left img {
-      height: 40px;
-    }
-    nav .buttons button {
-      margin-left: 10px;
-      padding: 5px 10px;
-    }
-
-    /* Estilos del botón flotante WhatsApp */
-    .whatsapp {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background: #25d366;
-      border-radius: 50%;
-      padding: 12px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.3);
-      z-index: 1000;
-      transition: transform 0.2s;
-    }
-    .whatsapp img {
-      width: 40px;
-      height: 40px;
-    }
-    .whatsapp:hover {
-      transform: scale(1.1);
-    }
- 
-
-  </style>
 </head>
 <body>
 
   <header>
-    Descarga Etsa APP. Más de 700 cursos te están esperando con tu suscripción.
+    <span>¿Deseas ayudar donando o ser asociado?.</span>
     <button>Saber más</button>
   </header>
 
   <nav>
     <div class="left">
-      <span class="menu-icon">☰</span>
-      <span>Menú</span>
       <div class="logo">
         <img src="logomdi.png" alt="Logo">
-        <span><b>FUNDACION ETSA</b></span>
+        <span><b>FUNDACIÓN ETSA</b></span>
       </div>
     </div>
     <div class="buttons">
       <button class="btn-info">Solicitar información</button>
-      <button  class="btn-login" id="loginboton">Iniciar sesión</button>
-
-<div id="userMenu" class="dropdown-menu">
-  <a href="campus.html">Ir a Campus</a>
-  <a href="#" id="logoutBtn">Cerrar sesión</a>
-</div>
-
+      <button class="btn-login" id="loginboton">Iniciar sesión</button>
     </div>
   </nav>
 
   <div class="menu">
-    <a href="#">Cursos <span class="online">ONLINE</span></a>
-    <a href="#">Másteres</a>
-    <a href="#">Licenciaturas</a>
-    <a href="#">Doctorados</a>
-    <a href="#">Suscripción MYLXP</a>
-    <a href="#">Webinars y podcast</a>
+    <a href="#cursos">Cursos</a>
+    <a href="#diplomados">Diplomados</a>
+    <a href="nuestrasofertas.html">nuestras ofertas</a>
+    <a href="campus.html">Campus</a>
+    <a href="ESTAsomos.html">¿Qué Somos?</a>
   </div>
 
-  <!-- ===== Buscador Principal ===== -->
   <section class="buscador">
-    <h2>¿Qué te interesa estudiar?</h2>
-    <form>
-      <input type="text" placeholder="Ejemplo: programación, marketing, idiomas...">
-      <select>
-        <option value="">Opciones formativas</option>
-        <option value="cursos">Cursos</option>
-        <option value="masters">Másteres</option>
-        <option value="licenciaturas">Licenciaturas</option>
-        <option value="doctorados">Doctorados</option>
-        <option value="webinars">Webinars y Podcast</option>
-      </select>
-      <button type="submit">Buscar</button>
-    </form>
+    <div class="search-container">
+      <form id="search-form">
+        <select id="search-category">
+          <option value="all">Todas las acciones formativas</option>
+          <option value="curso">Cursos</option>
+          <option value="diplomado">Diplomados</option>
+        </select>
+        <input type="text" id="search-input" placeholder="¿Qué quieres estudiar?">
+        <button type="submit">Buscar</button>
+      </form>
+    </div>
   </section>
 
-  <!-- ===== Sección Facultades ===== -->
   <section class="facultades">
     <h2>Facultades</h2>
-    <p>Encuentra el curso o máster que más se adapta a ti</p>
-    <div class="facultades-grid">
-      <div class="facultad-card">Arquitectura y Diseño</div>
-      <div class="facultad-card">Arte</div>
-      <div class="facultad-card">Ciencias</div>
-      <div class="facultad-card">Deporte</div>
-      <div class="facultad-card">Derecho</div>
-      <div class="facultad-card">Business Management</div>
-      <div class="facultad-card">Inversiones y Finanzas</div>
-      <div class="facultad-card">Docencia y Formación para el profesorado</div>
-      <div class="facultad-card">Pedagogía Terapéutica</div>
-      <div class="facultad-card">Trabajo Social</div>
-      <div class="facultad-card">Enfermería</div>
-      <div class="facultad-card">Farmacia</div>
-      <div class="facultad-card">Fisioterapia</div>
-      <div class="facultad-card">Idiomas</div>
-      <div class="facultad-card">Programación y desarrollo de software</div>
-      <div class="facultad-card">Nuevas tecnologías</div>
-      <div class="facultad-card">Ciencia de datos e Inteligencia artificial</div>
-      <div class="facultad-card">Ciberseguridad y Cloud computing</div>
-      <div class="facultad-card">Marketing digital y Comunicación</div>
-      <div class="facultad-card">Medicina</div>
-      <div class="facultad-card">Nutrición</div>
-      <div class="facultad-card">Profesiones y oficios</div>
-      <div class="facultad-card">Psicología</div>
-      <div class="facultad-card">Turismo</div>
-      <div class="facultad-card">Veterinaria</div>
-      <div class="facultad-card">Seguridad y PRL</div>
-      <div class="facultad-card">Recursos Humanos</div>
-      <div class="facultad-card">Ingeniería</div>
+    <p>Encuentra la formación que más se adapta a ti</p>
+    <div id="selected-facultad-container"></div>
+    <div class="facultades-grid" id="facultades-grid">
+      <div class="facultad-card" data-faculty="Arquitectura y Diseño">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2L1 9l4 1v9H3v2h18v-2h-2V10l4-1-11-7zm-2 16h-2v-6h2v6zm4 0h-2v-6h2v6z"/></svg>
+        <span>Arquitectura y Diseño</span>
+      </div>
+      <div class="facultad-card" data-faculty="Arte y Humanidades">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9c.83 0 1.64-.11 2.41-.32.31-.09.6-.26.83-.49l2.76 2.76c.78.78 2.05.78 2.83 0 .78-.78.78-2.05 0-2.83L18.07 18c.23-.23.4-.52.49-.83.21-.77.32-1.58.32-2.41 0-4.97-4.03-9-9-9zm0 16c-3.86 0-7-3.14-7-7s3.14-7 7-7 7 3.14 7 7-3.14 7-7 7z"/></svg>
+        <span>Arte y Humanidades</span>
+      </div>
+      <div class="facultad-card" data-faculty="Ciencias y Tecnología">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/></svg>
+        <span>Ciencias y Tecnología</span>
+      </div>
+      <div class="facultad-card" data-faculty="Salud y Deporte">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/></svg>
+        <span>Salud y Deporte</span>
+      </div>
+      <div class="facultad-card" data-faculty="Derecho y Leyes">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/></svg>
+        <span>Derecho y Leyes</span>
+      </div>
+      <div class="facultad-card" data-faculty="Business Management">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 6h-4V4c0-1.11-.89-2-2-2h-4c-1.11 0-2 .89-2 2v2H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm-6 0h-4V4h4v2z"/></svg>
+        <span>Business Management</span>
+      </div>
+      <div class="facultad-card" data-faculty="Inversiones y Finanzas">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/></svg>
+        <span>Inversiones y Finanzas</span>
+      </div>
+       <div class="facultad-card" data-faculty="Marketing y Comunicación">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/></svg>
+        <span>Marketing y Comunicación</span>
+      </div>
+       <div class="facultad-card" data-faculty="Programación y Software">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/></svg>
+        <span>Programación y Software</span>
+      </div>
+       <div class="facultad-card" data-faculty="Idiomas">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/></svg>
+        <span>Idiomas</span>
+      </div>
     </div>
   </section>
 
-  <!-- ===== Sección de Cursos Ejemplo ===== -->
   <section class="cursos">
-    <h2>Cursos Destacados</h2>
+    <h2 id="cursos">Cursos Destacados</h2>
     <div class="cursos-grid">
-      <div class="curso-card">
-        <img src="https://img.freepik.com/vector-premium/icono-marketing-digital_1188135-2461.jpg" alt="Curso Marketing Digital">
-        <h3>Curso de Marketing Digital</h3>
-        <p>Aprende estrategias de SEO, redes sociales y publicidad online.</p>
-        <button>Ver más</button>
+      <div class="curso-card" data-faculty="Salud y Deporte" data-type="curso">
+        <img src="recreacion.png" alt="Curso Recreacion">
+        <div class="curso-card-content">
+          <h3>Recreacion con proposito</h3>
+          <p>Aprende estrategias de recreación y lúdica.</p>
+          <button><a href="recreacion.html" style="text-decoration: none;">Ver más</a></button>
+        </div>
       </div>
-      <div class="curso-card">
-        <img src="https://img.freepik.com/vector-premium/icono-lenguaje-programacion-python_1188135-1355.jpg" alt="Curso Python">
-        <h3>Curso de Programación en Python</h3>
-        <p>Domina uno de los lenguajes más usados en ciencia de datos y desarrollo web.</p>
-        <button>Ver más</button>
+      <div class="curso-card" data-faculty="Programación y Software" data-type="curso">
+        <img src="https://images.unsplash.com/photo-1550439062-609e1531270e?w=500&q=80" alt="Curso Python">
+        <div class="curso-card-content">
+          <h3>Curso IA para no programadores</h3>
+          <p>Domina la IA en su totalidad </p>
+          <button><a href="IA.html" style="text-decoration: none;">Ver más</a></button>
+        </div>
       </div>
-      <div class="curso-card">
-        <img src="https://img.freepik.com/vector-premium/icono-negocios-empresa_1188135-2454.jpg" alt="Curso Gestión Empresarial">
-        <h3>Curso de Gestión Empresarial</h3>
-        <p>Conoce las claves para administrar y dirigir empresas exitosas.</p>
-        <button>Ver más</button>
+      <div class="curso-card" data-faculty="Business Management" data-type="curso">
+        <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=500&q=80" alt="Curso Gestión Empresarial">
+        <div class="curso-card-content">
+          <h3>Curso de Gestión Empresarial</h3>
+          <p>Conoce las claves para administrar y dirigir empresas exitosas.</p>
+          <button>Ver más</button>
+        </div>
       </div>
-      <div class="curso-card">
-        <img src="https://img.freepik.com/vector-premium/icono-idioma-ingles_1188135-2411.jpg" alt="Curso Inglés">
-        <h3>Curso de Inglés B2</h3>
-        <p>Mejora tu nivel de inglés para estudios, trabajo y viajes.</p>
-        <button>Ver más</button>
+      <div class="curso-card" data-faculty="Idiomas" data-type="curso">
+        <img src="https://images.unsplash.com/photo-1521791055328-2d741b250165?w=500&q=80" alt="Curso Inglés">
+        <div class="curso-card-content">
+          <h3>Curso de Inglés B2</h3>
+          <p>Mejora tu nivel de inglés para estudios, trabajo y viajes.</p>
+          <button>Ver más</button>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Botón flotante WhatsApp -->
+  <section class="diplomados">
+    <h2 id ="diplomados">Diplomados Destacados</h2>
+    <div class="diplomados-grid">
+      <div class="curso-card" data-faculty="Ciencias y Tecnología" data-type="diplomado">
+        <img src="https://images.unsplash.com/photo-1588702547919-26089e690ecc?w=500&q=80" alt="Diplomado en Docencia">
+        <div class="curso-card-content">
+          <h3>Diplomado en Docencia Virtual</h3>
+          <p>Desarrolla habilidades para la enseñanza en entornos digitales.</p>
+          <button>Ver más</button>
+        </div>
+      </div>
+      <div class="curso-card" data-faculty="Salud y Deporte" data-type="diplomado">
+        <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=500&q=80" alt="Diplomado en Psicología Clínica">
+        <div class="curso-card-content">
+          <h3>Diplomado en Psicología Clínica</h3>
+          <p>Profundiza en técnicas de evaluación y terapia psicológica.</p>
+          <button>Ver más</button>
+        </div>
+      </div>
+      <div class="curso-card" data-faculty="Business Management" data-type="diplomado">
+        <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=500&q=80" alt="Diplomado en Gerencia">
+        <div class="curso-card-content">
+          <h3>Diplomado en Alta Gerencia</h3>
+          <p>Adquiere herramientas de liderazgo y gestión estratégica de negocios.</p>
+          <button>Ver más</button>
+        </div>
+      </div>
+      <div class="curso-card" data-faculty="Inversiones y Finanzas" data-type="diplomado">
+        <img src="https://images.unsplash.com/photo-1605152276897-4f618f831968?w=500&q=80" alt="Diplomado en Finanzas">
+        <div class="curso-card-content">
+          <h3>Diplomado en Finanzas Corporativas</h3>
+          <p>Analiza y gestiona las finanzas de grandes organizaciones.</p>
+          <button>Ver más</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <a href="https://wa.me/573001112233" class="whatsapp" target="_blank">
     <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
   </a>
-<script src="auth.js"></script>
+  
+  <script src="auth.js"></script>
+  <script src="logicainicial.js"></script>
+  <script src="ESTAscript.js"></script>
 
 </body>
 </html>

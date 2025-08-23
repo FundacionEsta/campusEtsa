@@ -3,104 +3,156 @@
 <head>
   <meta charset="UTF-8">
   <title>Formulario de Inscripción</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
     body {
-      font-family: 'Arial', sans-serif;
-      background: linear-gradient(to right, #6a11cb, #2575fc);
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #fdf2f8 0%, #e0f7fa 100%);
       margin: 0;
-      padding: 0;
+      padding: 20px;
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 100vh;
-      color: #333;
+      min-height: 100vh;
+      box-sizing: border-box;
     }
 
     .container {
-      background-color: #fff;
-      padding: 30px 40px;
-      border-radius: 15px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+      background-color: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(10px);
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
       width: 100%;
-      max-width: 400px;
+      max-width: 420px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
     }
 
-    h2 {
-      text-align: center;
-      margin-bottom: 25px;
+    .header-text {
+        text-align: center;
+        margin-bottom: 30px;
+    }
+    
+    .header-text h2 {
+      margin: 0;
+      font-size: 1.8em;
       color: #333;
+      font-weight: 700;
     }
 
-    label {
+    .header-text p {
+        margin-top: 5px;
+        color: #666;
+    }
+
+    .input-group {
+        position: relative;
+        margin-bottom: 25px;
+    }
+    
+    .input-group label {
       display: block;
-      margin-bottom: 5px;
-      font-weight: bold;
+      margin-bottom: 8px;
+      font-weight: 500;
+      color: #555;
+      font-size: 0.9em;
     }
 
-    input {
+    .input-group input {
       width: 100%;
-      padding: 10px 12px;
-      margin-bottom: 20px;
-      border-radius: 8px;
-      border: 1px solid #ccc;
-      font-size: 14px;
+      padding: 12px 15px 12px 45px; /* Space for icon */
+      border-radius: 12px;
+      border: 1px solid #ddd;
+      font-size: 1em;
+      transition: all 0.3s ease;
+      box-sizing: border-box;
+    }
+
+    .input-group input:focus {
+        border-color: #89cff0;
+        box-shadow: 0 0 0 3px rgba(137, 207, 240, 0.3);
+        outline: none;
+    }
+
+    .input-group .icon {
+        position: absolute;
+        left: 15px;
+        top: 50%;
+        transform: translateY(25%);
+        color: #aaa;
+        transition: color 0.3s ease;
+    }
+
+    .input-group input:focus + .icon {
+        color: #89cff0;
     }
 
     input:read-only {
       background-color: #f0f0f0;
       color: #555;
+      cursor: not-allowed;
     }
 
-    button {
+    button[type="submit"] {
       width: 100%;
-      padding: 12px;
-      background-color: #2575fc;
+      padding: 15px;
+      background: linear-gradient(90deg, #89cff0, #f4c2c2);
       border: none;
       color: white;
-      font-size: 16px;
-      border-radius: 10px;
+      font-size: 1.1em;
+      font-weight: 600;
+      border-radius: 12px;
       cursor: pointer;
       transition: all 0.3s ease;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
     }
 
-    button:hover {
-      background-color: #6a11cb;
-    }
-
-    @media (max-width: 480px) {
-      .container {
-        padding: 20px;
-      }
+    button[type="submit"]:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(137, 207, 240, 0.4);
     }
   </style>
 </head>
 <body>
 
   <div class="container">
-    <h2>Formulario de Inscripción</h2>
+    <div class="header-text">
+        <h2>Inscripción a Recreación con propocito</h2>
+        <p>Completa tus datos para finalizar</p>
+    </div>
     <form id="formInscripcion">
-      <label>Nombre completo:</label>
-      <input type="text" id="nombreCompleto" required placeholder="Escribe tu nombre completo">
+      <div class="input-group">
+        <label for="nombreCompleto">Nombre completo:</label>
+        <input type="text" id="nombreCompleto" required placeholder="Escribe tu nombre completo">
+        <span class="icon">👤</span>
+      </div>
 
-      <label>Usuario:</label>
-      <input type="text" id="nombreUsuario" readonly>
+      <div class="input-group">
+        <label for="nombreUsuario">Usuario:</label>
+        <input type="text" id="nombreUsuario" readonly>
+        <span class="icon">🆔</span>
+      </div>
 
-      <label>Correo:</label>
-      <input type="email" id="correo" required placeholder="Escribe tu correo para recibir info del curso">
+      <div class="input-group">
+        <label for="correo">Correo:</label>
+        <input type="email" id="correo" required placeholder="Escribe tu correo para recibir info">
+        <span class="icon">✉️</span>
+      </div>
 
-      <button type="submit">Inscribirme</button>
+      <button type="submit">Inscribirme ahora</button>
     </form>
   </div>
 
- 
-
+  <!-- Scripts (Logica sin cambios) -->
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
-<script type="text/javascript">
+  <script type="text/javascript">
    (function(){
       emailjs.init("Q7HrpRuuL4kdUiszC"); // tu clave pública
    })();
-</script>
- <script src="sendemailre.js"></script>
+  </script>
+  <script src="sendemailre.js"></script>
   <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
   <script src="insrecre.js"></script>
 </body>

@@ -2,146 +2,106 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=0.4">
-    <title>Campus ETSA</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curso: Introducción a la IA - ETSA</title>
     <meta name="author" content="David Mendez">
     <link rel="stylesheet" href="IA.css">
 </head>
 <body>
+
     <header>
-
-          <ul class="nav-right">
-        <li><li><button id="loginboton">Iniciar sesión</button>
-<div id="userMenu" class="dropdown1-menu">
-  <a href="index.html">ir al inicio web</a>
-  <a href="#" id="logoutBtn">Cerrar sesión</a>
-</div></li>
-    </ul>
-   <li class="dropdown">
-    <a href="#" style="display: flex; align-items: center; gap: 8px;">
-        <span>=</span>
-        <span>Menu</span>
-    </a>
-    <ul class="dropdown-menu">
-        <li><a href="#calificaciones">Calificaciones</a></li>
-        <li><a href="#calendario">Calendario</a></li>
-        <li><a href="#novedades">Novedades</a></li>
-    </ul>
-</li>
-<div class="logo">
-    <img src="logomdi.png" alt="Logo ETSA">
-    <p style="font-family: 'Times New Roman', Times, serif;">Fundación ETSA</p>
-</div>
-
-       
-
-<nav>
-
-    <ul>
-        <li><a href="index.html">Inicio web</a></li>
-        <li><a href="campus.html">Volver al campus</a></li>
-        <li><a href="#curso">Cursos</a></li> 
-        <li><a href="#horarios">Horarios</a></li> 
-        <li><a href="#contacto">Contacto</a></li>
-        <li><a href="ESTAsomos.html">¿Qué Somos?</a></li>
-     </ul>
-</nav>
-
-
-    
-
-
+        <div class="header-left">
+            <a href="index.html" class="logo">
+                <img src="logomdi.png" alt="Logo ETSA">
+                <span>Fundación ETSA</span>
+            </a>
+            <nav>
+                <a href="index.html">Inicio Web</a>
+                <a href="campus.html">Volver al Campus</a>
+            </nav>
+        </div>
+        <div class="header-right">
+            <button id="loginboton">Iniciar sesión</button>
+            <div id="userMenu" class="dropdown1-menu">
+                <a href="index.html">Ir al inicio web</a>
+                <a href="#" id="logoutBtn">Cerrar sesión</a>
+            </div>
+        </div>
     </header>
 
-    <section id="inicio" class="section">
-        <h2>Bienvenido al Campus ETSA</h2>
-        <img src="logo.png" alt="Logo ETSA" style="width: 250px; height: 200px;">
-        <p>Tu portal de acceso a diplomados, cursos y clases abiertas.</p>
-    </section>
-
- 
-
-   
-<div class="cursos-container2">
-   <center><h2>Curso</h2></center>
-
-   <center><h3>Mas información sobre RECREACION CON PROPOCITO</h3></center>
-
-
-     <div class="curso-card3">
-        <div style="position: relative;">
-         <span class="etiqueta-descuento">Beca - 15%</span>
-            <img class="curso-img" src="recreacion.png" alt="Curso imagen">
+    <main>
+        <div class="curso-container">
+            <div class="curso-image-section">
+                <!-- La imagen original se mantiene -->
+                <img class="curso-img" src="IA.png" alt="Curso de Inteligencia Artificial">
+                <span class="etiqueta-descuento">Beca - 15%</span>
+            </div>
+            <div class="curso-info-section">
+                <h1>Curso: Introducción a la IA para no programadores</h1>
+                <p class="detalles">
+                    <span>📍 Online/Semi-presencial/Presencial</span> • 
+                    <span>⏱ 50h</span>
+                </p>
+                <p class="alumnos">
+                    <span>👥 5336 alumnos han realizado el curso</span><br>
+                    <span>👥 0 alumnos actuales</span>
+                </p>
+                <div class="precio-container">
+                    <span class="precio-descuento">102.000$</span>
+                    <span class="precio-original">120.000$</span> 
+                </div>
+                <div class="botones">
+                    <button class="btn btn-pdf">Temario PDF</button>
+                    <!-- El ID original se mantiene -->
+                    <button class="btn btn-inscri" id="inscribirseBtn">Inscripción</button>
+                </div>
+            </div>
         </div>
-         <div class="curso-info">
-            <h3><b>CURSO RECREACION CON PROPOCITO:</b></h3>
-            <p class="detalles">
-                <span>📍 Online/Semi-presencial / Presencial</span> • 
-                <span>⏱ 50h</span>
-        </p>
-        <p class="alumnos">👥 0 cantidad de alumnos que realizaron el curso</p>
-        <p class="alumnos">👥 0 cantidad de alumnos Actuales</p>
-        
-        <p class="precio">
-            <span class="precio-original">100.000$</span> 
-            <span class="precio-descuento">85.000$</span>
-        </p>
 
-        
-        <div class="botones">
-            <button class="btn-pdf">Temario PDF</button>
-        </div>
-     </div>
-  </div>
- <body>
-  <div class="carrusel">
-    <button class="flecha" id="flecha-izq">&#8592;</button>
-    <img id="imagen-carrusel" src="recreacion1.png" alt="Imagen carrusel">
-    <button class="flecha" id="flecha-der">&#8594;</button>
-  </div>
-<script>
-    const imagenes = ["IA1.png", "IA2.png", "IA3.png"]; 
-    let indice = 0;
-
-    const img = document.getElementById("imagen-carrusel");
-    const flechaIzq = document.getElementById("flecha-izq");
-    const flechaDer = document.getElementById("flecha-der");
-
-    flechaIzq.addEventListener("click", () => {
-      indice = (indice - 1 + imagenes.length) % imagenes.length;
-      img.src = imagenes[indice];
-    });
-
-    flechaDer.addEventListener("click", () => {
-      indice = (indice + 1) % imagenes.length;
-      img.src = imagenes[indice];
-    });
-  </script>
-  
-
-</div>
-
-
-        
-    <section id="horarios" class="section">
-        <h2>Horarios</h2>
-        <div id="horarios-tabla"></div>
-    </section>
-
+        <section class="carrusel-section">
+            <h2>Galería del Curso</h2>
+            <div class="carrusel">
+                <button class="flecha" id="flecha-izq">&#8592;</button>
+                <!-- El ID y la imagen inicial se mantienen -->
+                <img id="imagen-carrusel" src="IA1.png" alt="Imagen carrusel">
+                <button class="flecha" id="flecha-der">&#8594;</button>
+            </div>
+        </section>
+    </main>
+    
     <footer>
         <div class="social">
             <a href="https://facebook.com" target="_blank">Facebook</a>
             <a href="https://instagram.com" target="_blank">Instagram</a>
             <a href="https://wa.me/573000000000" target="_blank">WhatsApp</a>
         </div>
-        <p>&copy; 2025 Fundación ETSA</p>
+        <p>&copy; 2025 Fundación ETSA. Todos los derechos reservados.</p>
     </footer>
 
-    <script src="Carrusel_script.js"></script>
-    <script src="auth.js"></script>
-    <a href="" target="_blank" class="whatsapp-float">
-    <img src="whap.png" alt="WhatsApp">
-</a>
+    <a href="https://wa.me/573001112233" class="whatsapp-float" target="_blank">
+        <img src="whap.png" alt="WhatsApp">
+    </a>
 
+    <!-- Scripts (Logica sin cambios) -->
+    <script>
+        const imagenes = ["IA1.png", "IA2.png", "IA3.png"]; 
+        let indice = 0;
+
+        const img = document.getElementById("imagen-carrusel");
+        const flechaIzq = document.getElementById("flecha-izq");
+        const flechaDer = document.getElementById("flecha-der");
+
+        flechaIzq.addEventListener("click", () => {
+            indice = (indice - 1 + imagenes.length) % imagenes.length;
+            img.src = imagenes[indice];
+        });
+
+        flechaDer.addEventListener("click", () => {
+            indice = (indice + 1) % imagenes.length;
+            img.src = imagenes[indice];
+        });
+    </script>
+    <script src="IAauth.js"></script> 
+    
 </body>
 </html>

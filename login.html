@@ -1,37 +1,196 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Login & Registro</title>
-  <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login & Registro</title>
+    <!-- Importa la fuente Inter de Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Estilos generales del cuerpo */
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #7df3f3 0%, #ffa7ff 100%); /* Color de fondo base */
+        }
+
+        /* Contenedor principal para el formulario y el título */
+        .login-container {
+            background-color: #fff;
+            padding: 2rem 2.5rem;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            width: 380px;
+            text-align: center;
+            box-sizing: border-box;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        /* Efecto al pasar el cursor */
+        .login-container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Título del formulario */
+        .form-title {
+            font-size: 2em;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        /* Estilos de los campos de entrada (inputs) */
+        .input-group {
+            position: relative;
+            margin-bottom: 25px;
+        }
+        
+        .input-group input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ced4da;
+            border-radius: 8px;
+            box-sizing: border-box;
+            font-size: 1em;
+            color: #495057;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .input-group input::placeholder {
+            color: #adb5bd;
+        }
+
+        .input-group input:focus {
+            border-color: #007bff;
+            box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+            outline: none;
+        }
+
+        /* Estilos del botón */
+        .btn-submit {
+            width: 100%;
+            padding: 14px;
+            background-color: blueviolet;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.1s ease;
+        }
+
+        .btn-submit:hover {
+            background-color: #0056b3;
+            transform: translateY(-2px);
+        }
+
+        .btn-submit:active {
+            transform: translateY(0);
+        }
+
+        /* Estilos para el texto de cambio de formulario */
+        .form-switch-text {
+            font-size: 0.9em;
+            color: #6c757d;
+            margin-top: 20px;
+        }
+
+        /* Botón de alternar formulario */
+        .form-switch-text a {
+            color: #007bff;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .form-switch-text a:hover {
+            color: #0056b3;
+            text-decoration: underline;
+        }
+
+        /* Esconder el formulario de registro por defecto */
+        #registroForm {
+            display: none;
+        }
+
+    </style>
 </head>
 <body>
-  <h1>Sistema de Registro y Login</h1>
 
-  <!-- Formulario de Registro -->
-  <div class="form-container">
-    <h2>Registro</h2>
-    <form id="registroForm">
-      <input type="text" id="usuario" placeholder="Usuario" required>
-      <input type="email" id="email" placeholder="Correo" required>
-      <input type="password" id="password" placeholder="Contraseña" required>
-      <input type="password" id="password2" placeholder="Repite Contraseña" required>
-      <button type="submit">Registrar</button>
-    </form>
-  </div>
+<div class="login-container">
 
-  <!-- Formulario de Login -->
-  <div class="form-container">
-    <h2>Login</h2>
+  <img src="logomdi.png" width="150" height="100" alt="Logo ETSA" style="position: center;">
+    <h2 class="form-title">Login</h2>
+    
+    <!-- Formulario de Login -->
     <form id="loginForm">
-      <input type="text" id="loginUsuario" placeholder="Usuario" required>
-      <input type="password" id="loginPassword" placeholder="Contraseña" required>
-      <button type="submit">Entrar</button>
+        <div class="input-group">
+            <input type="text" id="loginUsuario" placeholder="Usuario" required>
+        </div>
+        <div class="input-group">
+            <input type="password" id="loginPassword" placeholder="Contraseña" required>
+        </div>
+        <button type="submit" class="btn-submit">Entrar</button>
     </form>
-  </div>
 
-  <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
-  <script src="app.js"></script>
+    <!-- Formulario de Registro -->
+    <form id="registroForm">
+        <div class="input-group">
+            <input type="text" id="usuario" placeholder="Usuario" required>
+        </div>
+        <div class="input-group">
+            <input type="email" id="email" placeholder="Correo" required>
+        </div>
+        <div class="input-group">
+            <input type="password" id="password" placeholder="Contraseña" required>
+        </div>
+        <div class="input-group">
+            <input type="password" id="password2" placeholder="Repite Contraseña" required>
+        </div>
+        <button type="submit" class="btn-submit">Registrar</button>
+    </form>
+
+    <!-- Enlace para cambiar entre formularios -->
+    <p class="form-switch-text">
+        <a href="#" id="toggleFormLink">¿No tienes cuenta? Regístrate aquí</a>
+    </p>
+
+</div>
+
+<script>
+    // Referencias a los elementos del DOM
+    const loginForm = document.getElementById('loginForm');
+    const registroForm = document.getElementById('registroForm');
+    const formTitle = document.querySelector('.form-title');
+    const toggleFormLink = document.getElementById('toggleFormLink');
+
+    // Manejador de eventos para el enlace de alternar
+    toggleFormLink.addEventListener('click', function(event) {
+        event.preventDefault(); // Evita que la página se recargue
+
+        // Alterna la visibilidad de los formularios
+        if (loginForm.style.display === 'none') {
+            loginForm.style.display = 'block';
+            registroForm.style.display = 'none';
+            formTitle.textContent = 'Login';
+            toggleFormLink.textContent = '¿No tienes cuenta? Regístrate aquí';
+        } else {
+            loginForm.style.display = 'none';
+            registroForm.style.display = 'block';
+            formTitle.textContent = 'Registro';
+            toggleFormLink.textContent = '¿Ya tienes cuenta? Inicia sesión aquí';
+        }
+    });
+</script>
+
+<script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+<script src="app.js"></script>
 </body>
 </html>

@@ -3,13 +3,13 @@ async function   enviarCorreo(nombreCompleto, correo) {
     const templateParams = {
       to_name: nombreCompleto,
       to_email: correo,
-      course_name: "Recreación con Propósito",
+       course_name: "IA  no programadores",
       message: `Hola ${nombreCompleto}, tu inscripción al curso ha sido exitosa. ¡Nos vemos pronto!`
     };
 
     const response = await emailjs.send(
       "service_4cgcj3m",    // tu ID de servicio
-      "template_dv5qcgy",   // tu template
+      "template_9arzj9v",   // tu template
       templateParams
     );
 

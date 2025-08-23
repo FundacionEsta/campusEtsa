@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Inscripción al Curso de IA</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="formularioIA.css">
+</head>
+<body>
+
+  <div class="container">
+    <div class="header-text">
+        <h2>Inscripción a Introducción a la IA</h2>
+        <p>Completa tus datos para finalizar</p>
+    </div>
+    <form id="formInscripcion">
+      <div class="input-group">
+        <label for="nombreCompleto">Nombre completo:</label>
+        <input type="text" id="nombreCompleto" required placeholder="Escribe tu nombre completo">
+        <span class="icon">👤</span>
+      </div>
+
+      <div class="input-group">
+        <label for="nombreUsuario">Usuario:</label>
+        <input type="text" id="nombreUsuario" readonly>
+        <span class="icon">🆔</span>
+      </div>
+
+      <div class="input-group">
+        <label for="correo">Correo:</label>
+        <input type="email" id="correo" required placeholder="Escribe tu correo para recibir info">
+        <span class="icon">✉️</span>
+      </div>
+
+      <button type="submit">Inscribirme ahora</button>
+    </form>
+  </div>
+
+  <!-- Scripts (Logica sin cambios) -->
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+  <script type="text/javascript">
+   (function(){
+      emailjs.init("Q7HrpRuuL4kdUiszC"); // tu clave pública
+   })();
+  </script>
+  <script src="sendemailIA.js"></script>
+  <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+  <script src="insIA.js"></script>
+</body>
+</html>

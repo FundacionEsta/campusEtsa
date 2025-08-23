@@ -15,7 +15,7 @@ function filterCards() {
 
     
 document.getElementById("recreacion").addEventListener("click", function() {
-    window.location.href = "recreacion.html";
+    window.location.href = "newrecre.html";
      });
 
 document.getElementById("IA").addEventListener("click", function() {

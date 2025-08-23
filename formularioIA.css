@@ -1,0 +1,110 @@
+
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #f0f7ff;
+      margin: 0;
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      box-sizing: border-box;
+    }
+
+    .container {
+      background-color: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(10px);
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      width: 100%;
+      max-width: 420px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .header-text {
+        text-align: center;
+        margin-bottom: 30px;
+    }
+    
+    .header-text h2 {
+      margin: 0;
+      font-size: 1.8em;
+      color: #003366;
+      font-weight: 700;
+    }
+
+    .header-text p {
+        margin-top: 5px;
+        color: #507d96;
+    }
+
+    .input-group {
+        position: relative;
+        margin-bottom: 25px;
+    }
+    
+    .input-group label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 500;
+      color: #003366;
+      font-size: 0.9em;
+    }
+
+    .input-group input {
+      width: 100%;
+      padding: 12px 15px 12px 45px; /* Space for icon */
+      border-radius: 12px;
+      border: 1px solid #cce3ff;
+      font-size: 1em;
+      transition: all 0.3s ease;
+      box-sizing: border-box;
+      background: #f8fcff;
+    }
+
+    .input-group input:focus {
+        border-color: #6dd5ed;
+        box-shadow: 0 0 0 3px rgba(33, 147, 176, 0.2);
+        outline: none;
+    }
+
+    .input-group .icon {
+        position: absolute;
+        left: 15px;
+        top: 50%;
+        transform: translateY(25%);
+        color: #a0c0d1;
+        transition: color 0.3s ease;
+    }
+
+    .input-group input:focus + .icon {
+        color: #6dd5ed;
+    }
+
+    input:read-only {
+      background-color: #eaf5ff;
+      color: #507d96;
+      cursor: not-allowed;
+    }
+
+    button[type="submit"] {
+      width: 100%;
+      padding: 15px;
+      background: linear-gradient(90deg, #6dd5ed, #2193b0);
+      border: none;
+      color: white;
+      font-size: 1.1em;
+      font-weight: 600;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
+    button[type="submit"]:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(33, 147, 176, 0.4);
+    }

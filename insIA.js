@@ -37,7 +37,7 @@ if (formInscripcion) {
   try {
     // Guardar en Supabase
     const { data, error } = await supabaseClient
-      .from("recreacion_con_proposito")
+      .from("ia_no_programadores")
       .insert([
         {
           nombre_completo: nombreCompleto,
@@ -55,7 +55,7 @@ if (formInscripcion) {
     await enviarCorreo(nombreCompleto, correo); // <- usar await y async
 
     // Redirigir después
-    window.location.href = "recreacion.html";
+    window.location.href = "IA.html";
 
   } catch (err) {
     console.error("Error:", err);
