@@ -3,10 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=0.57">
-  <title>Panel de Maestros</title>
+  <title>Panel de Maestros y Estudiantes</title>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <!-- ✅ Cargar bcryptjs (para navegador, expone dcodeIO.bcrypt) -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/bcryptjs/2.4.3/bcrypt.min.js"></script>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -48,10 +46,10 @@
   </style>
 </head>
 <body>
-  <h1>📋 Panel de Maestros</h1>
+  <h1>📋 Panel de Maestros y Estudiantes</h1>
 
-  <!-- Formulario para agregar maestro -->
-  <form id="formMaestro">
+  <!-- Formulario -->
+  <form id="formUsuario">
     <label>Usuario:</label>
     <input type="text" id="usuario" required>
 
@@ -62,97 +60,111 @@
     <select id="rol">
       <option value="maestro">Maestro</option>
       <option value="admin">Admin</option>
+      <option value="estudiante">Estudiante</option>
     </select>
 
     <label>Contraseña:</label>
     <input type="password" id="password" required>
 
-    <button type="submit">Agregar Maestro</button>
+    <button type="submit">Agregar Usuario</button>
   </form>
 
-  <!-- Tabla de maestros -->
+  <!-- Tabla -->
   <table>
     <thead>
       <tr>
         <th>ID</th>
         <th>Usuario</th>
         <th>Correo</th>
+        <th>Rol</th>
         <th>Acciones</th>
       </tr>
     </thead>
-    <tbody id="tabla-maestros"></tbody>
+    <tbody id="tabla-usuarios"></tbody>
   </table>
 
   <script>
     // 🔑 Conectar con Supabase
     const SUPABASE_URL = "https://qlsuiwxlrsqgumjbuozk.supabase.co";
-    const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFsc3Vpd3hscnNxZ3VtamJ1b3prIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTU4NDIzMDEsImV4cCI6MjA3MTQxODMwMX0.xSnFcsfXGt1SRUee87sprQepocXC7baag1Sc2uhOkQk";
+    const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFsc3Vpd3hscnNxZ3VtamJ1b3prIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc1NTg0MjMwMSwiZXhwIjoyMDcxNDE4MzAxfQ.aZcci1acvTqhOLbTCnD5McG1l8tWO331G4GGmFftFks";
     const { createClient } = supabase;
     const db = createClient(SUPABASE_URL, SUPABASE_KEY);
 
-    // Cargar maestros al inicio
-    document.addEventListener("DOMContentLoaded", cargarMaestros);
+    // Función para hashear password con SHA-256
+    async function hashPassword(password) {
+      const encoder = new TextEncoder();
+      const data = encoder.encode(password);
+      const hash = await crypto.subtle.digest("SHA-256", data);
+      return Array.from(new Uint8Array(hash))
+        .map(b => b.toString(16).padStart(2, "0"))
+        .join("");
+    }
 
-    // Función para cargar los maestros
-    async function cargarMaestros() {
+    // Cargar usuarios al inicio
+    document.addEventListener("DOMContentLoaded", cargarUsuarios);
+
+    async function cargarUsuarios() {
       const { data, error } = await db
         .from("usuarios")
         .select("id, usuario, email, rol");
+
       if (error) {
         console.error(error);
         return;
       }
 
-      const tabla = document.getElementById("tabla-maestros");
+      const tabla = document.getElementById("tabla-usuarios");
       tabla.innerHTML = "";
-      data.forEach(maestro => {
+      data.forEach(user => {
         const fila = document.createElement("tr");
         fila.innerHTML = `
-          <td>${maestro.id}</td>
-          <td>${maestro.usuario}</td>
-          <td>${maestro.email}</td>
+          <td>${user.id}</td>
+          <td>${user.usuario}</td>
+          <td>${user.email}</td>
+          <td>${user.rol}</td>
           <td class="actions">
-            <button onclick="editarMaestro('${maestro.id}', '${maestro.usuario}', '${maestro.email}')">✏️ Editar</button>
-            <button onclick="eliminarMaestro('${maestro.id}')">🗑️ Eliminar</button>
+            <button onclick="editarUsuario('${user.id}', '${user.usuario}', '${user.email}')">✏️ Editar</button>
+            <button onclick="eliminarUsuario('${user.id}')">🗑️ Eliminar</button>
           </td>
         `;
         tabla.appendChild(fila);
       });
     }
 
-    // Agregar nuevo maestro con contraseña cifrada
-    document.getElementById("formMaestro").addEventListener("submit", async (e) => {
+    // Agregar nuevo usuario
+    document.getElementById("formUsuario").addEventListener("submit", async (e) => {
       e.preventDefault();
-      const usuario = document.getElementById("usuario").value;
-      const email = document.getElementById("email").value;
+      const usuario = document.getElementById("usuario").value.trim();
+      const email = document.getElementById("email").value.trim();
       const rol = document.getElementById("rol").value;
       const password = document.getElementById("password").value;
 
       try {
-        // ✅ Usar bcryptjs desde navegador
-        const bcrypt = dcodeIO.bcrypt;
-        const hashedPassword = bcrypt.hashSync(password, 10);
+        const passwordHash = await hashPassword(password);
 
-        const { error } = await db
-          .from("usuarios")
-          .insert([{ usuario, email, rol, password: hashedPassword }]);
+        const { error } = await db.from("usuarios").insert([{
+          usuario,
+          email,
+          rol,
+          password: passwordHash
+        }]);
 
         if (error) {
-          alert("❌ Error al agregar maestro: " + error.message);
+          alert("❌ Error al insertar en tabla usuarios: " + error.message);
           return;
         }
 
         e.target.reset();
-        cargarMaestros();
-        alert("✅ Maestro agregado con contraseña cifrada");
+        cargarUsuarios();
+        alert("✅ Usuario creado correctamente");
 
       } catch (err) {
         alert("❌ Error inesperado: " + err.message);
       }
     });
 
-    // Editar maestro
-    async function editarMaestro(id, usuario, email) {
+    // Editar usuario
+    async function editarUsuario(id, usuario, email) {
       const nuevoUsuario = prompt("Nuevo usuario/nombre:", usuario);
       const nuevoEmail = prompt("Nuevo correo:", email);
 
@@ -162,22 +174,22 @@
           .update({ usuario: nuevoUsuario, email: nuevoEmail })
           .eq("id", id);
         if (error) {
-          alert("❌ Error al editar maestro: " + error.message);
+          alert("❌ Error al editar: " + error.message);
           return;
         }
-        cargarMaestros();
+        cargarUsuarios();
       }
     }
 
-    // Eliminar maestro
-    async function eliminarMaestro(id) {
-      if (confirm("¿Seguro que deseas eliminar este maestro?")) {
+    // Eliminar usuario
+    async function eliminarUsuario(id) {
+      if (confirm("¿Seguro que deseas eliminar este usuario?")) {
         const { error } = await db.from("usuarios").delete().eq("id", id);
         if (error) {
-          alert("❌ Error al eliminar maestro: " + error.message);
+          alert("❌ Error al eliminar en tabla: " + error.message);
           return;
         }
-        cargarMaestros();
+        cargarUsuarios();
       }
     }
   </script>

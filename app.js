@@ -71,7 +71,7 @@ document.getElementById("loginForm").addEventListener("submit", async (e) => {
 
     // Redirigir según rol
     if (data.rol === "maestro") {
-      window.location.href = "panel-maestros.html"; // 👈 página exclusiva de maestros
+      window.location.href = "campusdocente.html"; // 👈 página exclusiva de maestros
     } else {
       window.location.href = "index.html"; // 👈 página de estudiantes
     }
