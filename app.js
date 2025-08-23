@@ -12,6 +12,7 @@ async function hashPassword(password) {
 }
 
 // ========= REGISTRO =========
+// 🚫 Solo registra estudiantes
 document.getElementById("registroForm").addEventListener("submit", async (e) => {
   e.preventDefault();
   
@@ -29,12 +30,17 @@ document.getElementById("registroForm").addEventListener("submit", async (e) => 
 
   const { error } = await supabaseClient
     .from("usuarios")
-    .insert([{ usuario, email, password: passwordHash }]);
+    .insert([{ 
+      usuario, 
+      email, 
+      password: passwordHash, 
+      rol: "estudiante" // 👈 siempre estudiante por defecto
+    }]);
 
   if (error) {
     alert("❌ Error en el registro: " + error.message);
   } else {
-    alert("✅ Usuario registrado con éxito");
+    alert("✅ Estudiante registrado con éxito");
     document.getElementById("registroForm").reset();
   }
 });
@@ -59,8 +65,15 @@ document.getElementById("loginForm").addEventListener("submit", async (e) => {
   if (error || !data) {
     alert("❌ Usuario o contraseña incorrectos");
   } else {
-    alert("✅ Bienvenido " + data.usuario);
-    localStorage.setItem("loggedUser", data.usuario); // 👈 ahora sí lo mismo que index.html
-    window.location.href = "index.html"; // Redirigir a página principal
+    alert("✅ Bienvenido " + data.usuario + " (" + data.rol + ")");
+    localStorage.setItem("loggedUser", data.usuario);
+    localStorage.setItem("userRole", data.rol);
+
+    // Redirigir según rol
+    if (data.rol === "maestro") {
+      window.location.href = "panel-maestros.html"; // 👈 página exclusiva de maestros
+    } else {
+      window.location.href = "index.html"; // 👈 página de estudiantes
+    }
   }
 });
