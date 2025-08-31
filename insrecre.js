@@ -42,7 +42,8 @@ if (formInscripcion) {
         {
           nombre_completo: nombreCompleto,
           nombre_usuario: nombreUsuario,
-          correo: correo
+          correo: correo,
+          curso_nombre :"recreacion_con_proposito"
         }
       ]);
 

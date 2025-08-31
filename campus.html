@@ -35,7 +35,7 @@
             color: #333;
             text-decoration: none;
         }
-        .logo img {
+        .logo img, .logo svg {
             height: 45px;
         }
         .header-right {
@@ -277,8 +277,7 @@
 
     <header>
         <a href="#" class="logo">
-            <!-- Usando un SVG para el logo en lugar de una imagen externa -->
-            <svg xmlns="http://www.w3.org/2000/svg" width="45" height="45" viewBox="0 0 24 24" fill="none" stroke="#2193b0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-book"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V6.5A2.5 2.5 0 0 0 17.5 4h-11A2.5 2.5 0 0 0 4 6.5v13z"></path></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="45" height="45" viewBox="0 0 24 24" fill="none" stroke="#2193b0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V6.5A2.5 2.5 0 0 0 17.5 4h-11A2.5 2.5 0 0 0 4 6.5v13z"></path></svg>
             <span>Fundación ETSA</span>
         </a>
         <div class="header-right">
@@ -297,53 +296,51 @@
         </div>
 
         <div class="campus-nav">
-            <button id="btn-cursos" class="active">Mis Cursos</button>
-            <button id="btn-clase-virtual">Clase Virtual</button>
-            <button id="btn-material-estudio">Material de Estudio</button>
-            <button id="btn-examenes">Exámenes</button>
-            <button id="btn-calificaciones">Calificaciones</button>
-            <button id="btn-companeros">Compañeros</button>
+            <button id="btn-cursos" data-section="cursos-estudiante-section" class="active">Mis Cursos</button>
+            <button id="btn-clase-virtual" data-section="clase-virtual-section">Clase Virtual</button>
+            <button id="btn-material-estudio" data-section="material-estudio-section">Material de Estudio</button>
+            <button id="btn-examenes" data-section="examenes-section">Exámenes</button>
+            <button id="btn-calificaciones" data-section="calificaciones-section">Calificaciones</button>
+            <button id="btn-companeros" data-section="companeros-section">Compañeros</button>
         </div>
 
-        <!-- Mis Cursos -->
         <section id="cursos-estudiante-section" class="campus-section active">
             <div id="cursos-grid">
-                <p class="mensaje-vacio" id="cursos-mensaje">Cargando cursos inscritos...</p>
+                <p class="mensaje-vacio">Cargando cursos...</p>
             </div>
         </section>
 
-        <!-- Clase Virtual -->
         <section id="clase-virtual-section" class="campus-section">
-            <p class="mensaje-vacio" id="clase-virtual-mensaje">Selecciona un curso para ver el enlace de la clase.</p>
-            <div id="clase-virtual-display"></div>
+            <div id="clase-virtual-display">
+                 <p class="mensaje-vacio">Selecciona un curso para ver el enlace de la clase.</p>
+            </div>
         </section>
 
-        <!-- Material de Estudio -->
         <section id="material-estudio-section" class="campus-section">
-            <p class="mensaje-vacio" id="material-estudio-mensaje">Selecciona un curso para ver el material de estudio.</p>
-            <div id="material-estudio-display"></div>
+            <div id="material-estudio-display">
+                <p class="mensaje-vacio">Selecciona un curso para ver el material de estudio.</p>
+            </div>
         </section>
 
-        <!-- Exámenes -->
         <section id="examenes-section" class="campus-section">
-            <p class="mensaje-vacio" id="examenes-mensaje">Selecciona un curso para ver los exámenes.</p>
-            <div id="examenes-display"></div>
+            <div id="examenes-display">
+                <p class="mensaje-vacio">Selecciona un curso para ver los exámenes.</p>
+            </div>
         </section>
 
-        <!-- Calificaciones -->
         <section id="calificaciones-section" class="campus-section">
-            <p class="mensaje-vacio" id="calificaciones-mensaje">Selecciona un curso para ver tus calificaciones.</p>
-            <div id="calificaciones-display"></div>
+            <div id="calificaciones-display">
+                <p class="mensaje-vacio">Selecciona un curso para ver tus calificaciones.</p>
+            </div>
         </section>
         
-        <!-- Compañeros -->
         <section id="companeros-section" class="campus-section">
-            <p class="mensaje-vacio" id="companeros-mensaje">Selecciona un curso para ver a tus compañeros.</p>
-            <div id="companeros-display"></div>
+            <div id="companeros-display">
+                <p class="mensaje-vacio">Selecciona un curso para ver a tus compañeros.</p>
+            </div>
         </section>
     </main>
 
-    <!-- Modal personalizado para mensajes -->
     <div id="customModal" class="modal">
         <div class="modal-content">
             <p id="modalMessage"></p>
@@ -351,36 +348,16 @@
         </div>
     </div>
 
-    <!-- Script de Supabase -->
     <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
     <script>
         document.addEventListener('DOMContentLoaded', async () => {
-            // Función para mostrar el modal personalizado
-            function showCustomModal(message, callback) {
-                const modal = document.getElementById('customModal');
-                const modalMessage = document.getElementById('modalMessage');
-                const modalCloseBtn = document.getElementById('modalCloseBtn');
-                modalMessage.textContent = message;
-                modal.style.display = 'block';
-                modalCloseBtn.onclick = () => {
-                    modal.style.display = 'none';
-                    if (callback) {
-                        callback();
-                    }
-                };
-            }
-
-            // --- CONFIGURACIÓN Y ELEMENTOS DEL DOM ---
-            // Las claves de Supabase y el nombre del curso deben ser exactas.
             const SUPABASE_URL = "https://qlsuiwxlrsqgumjbuozk.supabase.co";
             const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFsc3Vpd3hscnNxZ3VtamJ1b3prIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTU4NDIzMDEsImV4cCI6MjA3MTQxODMwMX0.xSnFcsfXGt1SRUee87sprQepocXC7baag1Sc2uhOkQk";
             const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
             
-            // Marca de posición para el nombre del curso. REEMPLAZA ESTO.
-            const CURSO_BASE = "Curso Placeholder"; 
-
             const nombreEstudianteSpan = document.getElementById('nombre-estudiante');
             const loggedUser = localStorage.getItem("loggedUser");
+            let userId = null; 
             let selectedCourse = null;
 
             const cursosGrid = document.getElementById('cursos-grid');
@@ -390,226 +367,174 @@
             const calificacionesDisplay = document.getElementById('calificaciones-display');
             const companerosDisplay = document.getElementById('companeros-display');
 
-            const cursosMensaje = document.getElementById('cursos-mensaje');
-            const claseVirtualMensaje = document.getElementById('clase-virtual-mensaje');
-            const materialEstudioMensaje = document.getElementById('material-estudio-mensaje');
-            const examenesMensaje = document.getElementById('examenes-mensaje');
-            const calificacionesMensaje = document.getElementById('calificaciones-mensaje');
-            const companerosMensaje = document.getElementById('companeros-mensaje');
+            const sections = {
+                'cursos-estudiante-section': document.getElementById('cursos-estudiante-section'),
+                'clase-virtual-section': document.getElementById('clase-virtual-section'),
+                'material-estudio-section': document.getElementById('material-estudio-section'),
+                'examenes-section': document.getElementById('examenes-section'),
+                'calificaciones-section': document.getElementById('calificaciones-section'),
+                'companeros-section': document.getElementById('companeros-section')
+            };
 
-            const btnCursos = document.getElementById('btn-cursos');
-            const btnClaseVirtual = document.getElementById('btn-clase-virtual');
-            const btnMaterialEstudio = document.getElementById('btn-material-estudio');
-            const btnExamenes = document.getElementById('btn-examenes');
-            const btnCalificaciones = document.getElementById('btn-calificaciones');
-            const btnCompaneros = document.getElementById('btn-companeros');
+            function showCustomModal(message, callback) {
+                const modal = document.getElementById('customModal');
+                document.getElementById('modalMessage').textContent = message;
+                modal.style.display = 'block';
+                document.getElementById('modalCloseBtn').onclick = () => {
+                    modal.style.display = 'none';
+                    if (callback) callback();
+                };
+            }
 
-            const cursosSection = document.getElementById('cursos-estudiante-section');
-            const claseVirtualSection = document.getElementById('clase-virtual-section');
-            const materialEstudioSection = document.getElementById('material-estudio-section');
-            const examenesSection = document.getElementById('examenes-section');
-            const calificacionesSection = document.getElementById('calificaciones-section');
-            const companerosSection = document.getElementById('companeros-section');
-
-            // --- LÓGICA DE AUTENTICACIÓN ---
             const loginBtn = document.getElementById("loginboton");
             const userMenu = document.getElementById("userMenu");
             const logoutBtn = document.getElementById("logoutBtn");
 
             if (loggedUser) {
                 loginBtn.textContent = "👤 " + loggedUser;
-                loginBtn.style.backgroundColor = "#4caf50";
-                loginBtn.onclick = () => {
-                    userMenu.style.display = userMenu.style.display === "block" ? "none" : "block";
+                loginBtn.onclick = () => userMenu.style.display = userMenu.style.display === "block" ? "none" : "block";
+                logoutBtn.onclick = () => {
+                    localStorage.removeItem("loggedUser");
+                    showCustomModal("Sesión cerrada", () => window.location.reload());
                 };
-                if (logoutBtn) {
-                    logoutBtn.onclick = () => {
-                        localStorage.removeItem("loggedUser");
-                        showCustomModal("Sesión cerrada", () => window.location.reload());
-                    };
-                }
             } else {
-                loginBtn.onclick = () => {
-                    window.location.href = "login.html";
-                };
+                loginBtn.textContent = "Iniciar Sesión";
+                loginBtn.onclick = () => window.location.href = "login.html";
             }
 
-            window.onclick = function (event) {
-                if (!event.target.matches("#loginboton") && !event.target.matches("#userMenu") && !userMenu.contains(event.target)) {
+            window.onclick = (event) => {
+                if (!loginBtn.contains(event.target) && !userMenu.contains(event.target)) {
                     userMenu.style.display = "none";
                 }
             };
 
-            // --- VERIFICACIÓN DE ROL DEL USUARIO Y OBTENCIÓN DE ID ---
             if (!loggedUser) {
-                showCustomModal("Debes iniciar sesión para acceder al campus.", () => window.location.href = "login.html");
+                showCustomModal("Debes iniciar sesión para acceder.", () => window.location.href = "login.html");
                 return;
             }
 
             const { data: usuarioData, error: usuarioError } = await supabaseClient
                 .from('usuarios')
-                .select('usuario, rol')
+                .select('id, usuario, rol')
                 .eq('usuario', loggedUser)
                 .single();
 
             if (usuarioError || !usuarioData || usuarioData.rol.toLowerCase() !== "estudiante") {
-                console.error("Error de verificación de rol o usuario no encontrado:", usuarioError);
-                showCustomModal("Acceso denegado. Debes iniciar sesión como estudiante o tu usuario no está registrado.", () => window.location.href = "login.html");
+                showCustomModal("Acceso denegado. Debes ser estudiante.", () => window.location.href = "login.html");
                 return;
             }
 
             nombreEstudianteSpan.textContent = usuarioData.usuario;
+            userId = usuarioData.id;
 
-            // --- LÓGICA DE NAVEGACIÓN POR PESTAÑAS ---
             function activateSection(sectionId) {
-                const sections = [cursosSection, claseVirtualSection, materialEstudioSection, examenesSection, calificacionesSection, companerosSection];
-                const buttons = [btnCursos, btnClaseVirtual, btnMaterialEstudio, btnExamenes, btnCalificaciones, btnCompaneros];
-                sections.forEach(s => s.classList.remove('active'));
-                buttons.forEach(b => b.classList.remove('active'));
-                document.getElementById(sectionId).classList.add('active');
-                document.getElementById(`btn-${sectionId.replace('-section', '')}`).classList.add('active');
+                Object.values(sections).forEach(s => s.classList.remove('active'));
+                document.querySelectorAll('.campus-nav button').forEach(b => b.classList.remove('active'));
+                
+                sections[sectionId].classList.add('active');
+                document.querySelector(`[data-section="${sectionId}"]`).classList.add('active');
+                
+                if (selectedCourse) loadContentForActiveSection();
             }
-
-            btnCursos.addEventListener('click', () => activateSection('cursos-estudiante-section'));
-            btnClaseVirtual.addEventListener('click', () => {
-                activateSection('clase-virtual-section');
-                if (selectedCourse) cargarClaseVirtual(selectedCourse);
-            });
-            btnMaterialEstudio.addEventListener('click', () => {
-                activateSection('material-estudio-section');
-                if (selectedCourse) cargarMaterialEstudio(selectedCourse);
-            });
-            btnExamenes.addEventListener('click', () => {
-                activateSection('examenes-section');
-                if (selectedCourse) cargarExamenes(selectedCourse);
-            });
-            btnCalificaciones.addEventListener('click', () => {
-                activateSection('calificaciones-section');
-                if (selectedCourse) cargarCalificaciones(selectedCourse, loggedUser);
-            });
-            btnCompaneros.addEventListener('click', () => {
-                activateSection('companeros-section');
-                if (selectedCourse) cargarCompaneros(selectedCourse, loggedUser);
+            
+            document.querySelectorAll('.campus-nav button').forEach(button => {
+                button.addEventListener('click', (e) => {
+                    const sectionId = e.target.dataset.section;
+                    activateSection(sectionId);
+                });
             });
 
-            // --- FUNCIONES PRINCIPALES PARA CARGAR DATOS ---
+            function loadContentForActiveSection() {
+                const activeSectionId = document.querySelector('.campus-section.active').id;
+                switch (activeSectionId) {
+                    case 'clase-virtual-section':
+                        cargarClaseVirtual(selectedCourse);
+                        break;
+                    case 'material-estudio-section':
+                        cargarMaterialEstudio(selectedCourse);
+                        break;
+                    case 'examenes-section':
+                        cargarExamenes(selectedCourse);
+                        break;
+                    case 'calificaciones-section':
+                        cargarCalificaciones(selectedCourse, loggedUser); // CORREGIDO: Pasa el nombre de usuario
+                        break;
+                    case 'companeros-section':
+                        cargarCompaneros(selectedCourse, userId);
+                        break;
+                }
+            }
+            
             async function cargarCursos() {
                 try {
-                    // Este console.log te mostrará el nombre de usuario que se está usando en la consulta.
-                    // ¡Verifica que este nombre coincida exactamente con el de tu base de datos!
-                    console.log(`Buscando cursos para el usuario: '${loggedUser}'`);
-                    
-                    const { data: cursos, error: cursosError } = await supabaseClient
+                    const { data: cursos, error } = await supabaseClient
                         .from('estudiantes_materias')
-                        .select('materia')
-                        .eq('usuario_nombre', loggedUser);
+                        .select('nombre_materia')
+                        .eq('estudiante_id', userId);
 
-                    console.log("Resultados de la consulta de cursos:", { data: cursos, error: cursosError });
-
-                    if (cursosError) {
-                        console.error('Error de Supabase al cargar cursos:', cursosError);
-                        throw new Error(`Error: La tabla 'estudiantes_materias' o la columna 'usuario_nombre' pueden no coincidir. Detalles: ${cursosError.message}`);
-                    }
+                    if (error) throw error;
 
                     if (!cursos || cursos.length === 0) {
-                        cursosMensaje.textContent = "No estás inscrito en ningún curso. Por favor, contacta a tu administrador para inscribirte.";
-                        cursosGrid.innerHTML = ''; // Limpiar la cuadrícula si no hay cursos
+                        cursosGrid.innerHTML = `<p class="mensaje-vacio">No estás inscrito en ningún curso.</p>`;
                         return;
                     }
-
-                    cursosMensaje.textContent = "";
+                    
                     renderizarCursos(cursos);
 
-                    // Solo intentar cargar el primer curso si hay cursos
                     if (cursos.length > 0) {
-                        selectedCourse = cursos[0].materia;
-                        const firstCourseBtn = document.getElementById(`curso-btn-${selectedCourse.replace(/\s/g, '-')}`);
-                        if (firstCourseBtn) {
-                            firstCourseBtn.classList.add('active-curso');
-                        }
+                        const primerCurso = cursos[0].nombre_materia;
+                        document.querySelector(`[data-curso="${primerCurso}"]`).click();
                     }
+
                 } catch (err) {
-                    console.error("Error cargando cursos:", err);
-                    showCustomModal("Error al cargar tus cursos: " + err.message);
+                    showCustomModal(`Error al cargar tus cursos: ${err.message}`);
                 }
             }
 
             function renderizarCursos(cursos) {
                 cursosGrid.innerHTML = cursos.map(c => `
-                    <button class="curso-btn" id="curso-btn-${c.materia.replace(/\s/g, '-')}" data-curso="${c.materia}">${c.materia}</button>
+                    <button class="curso-btn" data-curso="${c.nombre_materia}">${c.nombre_materia}</button>
                 `).join('');
 
                 document.querySelectorAll('.curso-btn').forEach(btn => {
                     btn.addEventListener('click', () => {
-                        const cursoSeleccionado = btn.dataset.curso;
-                        selectedCourse = cursoSeleccionado;
+                        selectedCourse = btn.dataset.curso;
                         document.querySelectorAll('.curso-btn').forEach(b => b.classList.remove('active-curso'));
                         btn.classList.add('active-curso');
-
-                        const activeSectionId = document.querySelector('.campus-section.active').id;
-                        if (activeSectionId === 'companeros-section') {
-                            cargarCompaneros(selectedCourse, loggedUser);
-                        } else if (activeSectionId === 'clase-virtual-section') {
-                            cargarClaseVirtual(selectedCourse);
-                        } else if (activeSectionId === 'material-estudio-section') {
-                            cargarMaterialEstudio(selectedCourse);
-                        } else if (activeSectionId === 'examenes-section') {
-                            cargarExamenes(selectedCourse);
-                        } else if (activeSectionId === 'calificaciones-section') {
-                            cargarCalificaciones(selectedCourse, loggedUser);
-                        }
+                        loadContentForActiveSection();
                     });
                 });
             }
 
-            // --- FUNCIONES PARA CARGAR EL CONTENIDO ESPECÍFICO DEL CURSO ---
-            async function cargarCompaneros(curso, nombreUsuario) {
-                companerosMensaje.textContent = `Cargando compañeros de ${curso}...`;
-                companerosDisplay.innerHTML = `<p class="mensaje-vacio">Cargando...</p>`;
-                
+            async function cargarCompaneros(curso, estudianteIdActual) {
+                companerosDisplay.innerHTML = `<p class="mensaje-vacio">Cargando compañeros...</p>`;
                 try {
-                    const { data: estudiantesDelCurso, error: inscripcionesError } = await supabaseClient
+                    const { data: estudiantes, error } = await supabaseClient
                         .from('estudiantes_materias')
-                        .select('usuario_nombre')
-                        .eq('materia', curso);
+                        .select('estudiante_id')
+                        .eq('nombre_materia', curso);
                     
-                    if (inscripcionesError) throw inscripcionesError;
+                    if (error) throw error;
 
-                    if (!estudiantesDelCurso || estudiantesDelCurso.length === 0) {
-                        companerosMensaje.textContent = `No hay compañeros inscritos en ${curso}.`;
-                        companerosDisplay.innerHTML = '';
+                    const idsCompaneros = estudiantes.map(e => e.estudiante_id).filter(id => id !== estudianteIdActual);
+                    
+                    if (idsCompaneros.length === 0) {
+                        companerosDisplay.innerHTML = `<p class="mensaje-vacio">Aún no tienes compañeros en este curso.</p>`;
                         return;
                     }
 
-                    const nombresDeUsuarios = estudiantesDelCurso.map(e => e.usuario_nombre).filter(nombre => nombre !== nombreUsuario);
-                    
-                    if (nombresDeUsuarios.length === 0) {
-                        companerosMensaje.textContent = `Aún no tienes compañeros en este curso.`;
-                        companerosDisplay.innerHTML = '';
-                        return;
-                    }
-
-                    const { data: detallesEstudiantes, error: detallesError } = await supabaseClient
+                    const { data: detalles, error: detallesError } = await supabaseClient
                         .from('usuarios')
                         .select('nombre_completo, usuario, correo')
-                        .in('usuario', nombresDeUsuarios);
+                        .in('id', idsCompaneros);
 
                     if (detallesError) throw detallesError;
 
-                    if (!detallesEstudiantes || detallesEstudiantes.length === 0) {
-                        companerosMensaje.textContent = `No se encontraron detalles para los compañeros.`;
-                        companerosDisplay.innerHTML = '';
-                        return;
-                    }
-
-                    companerosMensaje.textContent = '';
                     companerosDisplay.innerHTML = `
                         <table class="calificaciones-table">
-                            <thead>
-                                <tr><th>Nombre Completo</th><th>Usuario</th><th>Email</th></tr>
-                            </thead>
+                            <thead><tr><th>Nombre</th><th>Usuario</th><th>Email</th></tr></thead>
                             <tbody>
-                                ${detallesEstudiantes.map(e => `
+                                ${detalles.map(e => `
                                     <tr>
                                         <td>${e.nombre_completo || 'N/A'}</td>
                                         <td>${e.usuario || 'N/A'}</td>
@@ -617,165 +542,108 @@
                                     </tr>
                                 `).join('')}
                             </tbody>
-                        </table>
-                    `;
+                        </table>`;
                 } catch (err) {
-                    console.error("Error cargando compañeros:", err);
-                    companerosMensaje.textContent = "Error al cargar los compañeros. Asegúrate de que las tablas de Supabase coincidan con el código.";
+                    companerosDisplay.innerHTML = `<p class="mensaje-vacio">Error al cargar compañeros.</p>`;
                 }
             }
-
+            
             async function cargarClaseVirtual(curso) {
-                claseVirtualMensaje.textContent = `Buscando enlace de clase virtual para ${curso}...`;
-                claseVirtualDisplay.innerHTML = `<p class="mensaje-vacio">Cargando...</p>`;
-
+                claseVirtualDisplay.innerHTML = `<p class="mensaje-vacio">Buscando enlace...</p>`;
                 try {
                     const { data, error } = await supabaseClient
-                        .from('clase_virtual_recreacion_con_proposito')
+                        .from('clase_virtual_recreacion_con_proposito') 
                         .select('enlace')
-                        // REEMPLAZA EL VALOR DE LA SIGUIENTE LÍNEA
-                        .eq('curso_nombre', CURSO_BASE);
+                        .eq('curso_nombre', curso); 
 
                     if (error) throw error;
-
-                    if (!data || data.length === 0) {
-                        claseVirtualMensaje.textContent = `El profesor aún no ha subido un enlace de clase virtual para ${curso}.`;
-                        claseVirtualDisplay.innerHTML = '';
+                    if (!data || data.length === 0 || !data[0].enlace) {
+                        claseVirtualDisplay.innerHTML = `<p class="mensaje-vacio">No hay enlace de clase virtual para este curso.</p>`;
                         return;
                     }
                     
-                    const enlace = data[0].enlace;
-                    claseVirtualDisplay.innerHTML = `
-                        <div class="form-container">
-                            <h3>Enlace de Clase Virtual</h3>
-                            <a href="${enlace}" target="_blank" style="word-wrap: break-word;">${enlace}</a>
-                        </div>
-                    `;
+                    claseVirtualDisplay.innerHTML = `<ul class="material-list"><li><span>Enlace a la clase</span><a href="${data[0].enlace}" target="_blank">Unirse</a></li></ul>`;
                 } catch (err) {
-                    console.error("Error cargando enlace de clase virtual:", err);
-                    claseVirtualMensaje.textContent = "Error al cargar el enlace.";
+                    claseVirtualDisplay.innerHTML = `<p class="mensaje-vacio">Error al cargar el enlace.</p>`;
                 }
             }
 
             async function cargarMaterialEstudio(curso) {
-                materialEstudioMensaje.textContent = `Buscando material de estudio para ${curso}...`;
-                materialEstudioDisplay.innerHTML = `<p class="mensaje-vacio">Cargando...</p>`;
-                
+                materialEstudioDisplay.innerHTML = `<p class="mensaje-vacio">Buscando material...</p>`;
                 try {
                     const { data, error } = await supabaseClient
                         .from('material_estudio_recreacion_con_proposito')
                         .select('titulo, enlace')
-                        // REEMPLAZA EL VALOR DE LA SIGUIENTE LÍNEA
-                        .eq('curso_nombre', CURSO_BASE);
+                        .eq('curso_nombre', curso);
 
                     if (error) throw error;
-
                     if (!data || data.length === 0) {
-                        materialEstudioMensaje.textContent = `El profesor aún no ha subido material de estudio para ${curso}.`;
-                        materialEstudioDisplay.innerHTML = '';
+                        materialEstudioDisplay.innerHTML = `<p class="mensaje-vacio">No hay material de estudio para este curso.</p>`;
                         return;
                     }
 
-                    materialEstudioDisplay.innerHTML = `
-                        <ul class="material-list">
-                            ${data.map(material => `
-                                <li>
-                                    <span>${material.titulo}</span>
-                                    <a href="${material.enlace}" target="_blank">Ver material</a>
-                                </li>
-                            `).join('')}
-                        </ul>
-                    `;
+                    materialEstudioDisplay.innerHTML = `<ul class="material-list">${data.map(m => `<li><span>${m.titulo}</span><a href="${m.enlace}" target="_blank">Ver</a></li>`).join('')}</ul>`;
                 } catch (err) {
-                    console.error("Error cargando material de estudio:", err);
-                    materialEstudioMensaje.textContent = "Error al cargar el material.";
+                    materialEstudioDisplay.innerHTML = `<p class="mensaje-vacio">Error al cargar el material.</p>`;
                 }
             }
 
             async function cargarExamenes(curso) {
-                examenesMensaje.textContent = `Buscando exámenes para ${curso}...`;
-                examenesDisplay.innerHTML = `<p class="mensaje-vacio">Cargando...</p>`;
-
+                examenesDisplay.innerHTML = `<p class="mensaje-vacio">Buscando exámenes...</p>`;
                 try {
                     const { data, error } = await supabaseClient
                         .from('evaluaciones_maestro')
                         .select('titulo, enlace')
-                        // REEMPLAZA EL VALOR DE LA SIGUIENTE LÍNEA
-                        .eq('curso_nombre', CURSO_BASE);
+                        .eq('curso_nombre', curso);
 
                     if (error) throw error;
-
                     if (!data || data.length === 0) {
-                        examenesMensaje.textContent = `El profesor aún no ha subido exámenes para ${curso}.`;
-                        examenesDisplay.innerHTML = '';
+                        examenesDisplay.innerHTML = `<p class="mensaje-vacio">No hay exámenes disponibles para este curso.</p>`;
                         return;
                     }
 
-                    examenesDisplay.innerHTML = `
-                        <ul class="material-list">
-                            ${data.map(examen => `
-                                <li>
-                                    <span>${examen.titulo}</span>
-                                    <a href="${examen.enlace}" target="_blank">Ir al Examen</a>
-                                </li>
-                            `).join('')}
-                        </ul>
-                    `;
+                    examenesDisplay.innerHTML = `<ul class="material-list">${data.map(ex => `<li><span>${ex.titulo}</span><a href="${ex.enlace}" target="_blank">Ir al Examen</a></li>`).join('')}</ul>`;
                 } catch (err) {
-                    console.error("Error cargando exámenes:", err);
-                    examenesMensaje.textContent = "Error al cargar los exámenes.";
+                    examenesDisplay.innerHTML = `<p class="mensaje-vacio">Error al cargar exámenes.</p>`;
                 }
             }
 
-            async function cargarCalificaciones(curso, nombreUsuario) {
-                calificacionesMensaje.textContent = `Cargando tus calificaciones para ${curso}...`;
-                calificacionesDisplay.innerHTML = `<p class="mensaje-vacio">Cargando...</p>`;
-
+            async function cargarCalificaciones(curso, nombreUsuario) { // CORREGIDO: Recibe nombreUsuario
+                calificacionesDisplay.innerHTML = `<p class="mensaje-vacio">Cargando calificaciones...</p>`;
                 try {
-                    const { data: calificaciones, error } = await supabaseClient
+                    const { data, error } = await supabaseClient
                         .from('calificaciones')
                         .select('*')
-                        // REEMPLAZA EL VALOR DE LA SIGUIENTE LÍNEA
-                        .eq('curso_nombre', CURSO_BASE)
-                        .eq('nombre_usuario', nombreUsuario);
+                        .eq('curso_nombre', curso)
+                        .eq('nombre_usuario', nombreUsuario); // CORREGIDO: Busca por nombre_usuario
 
                     if (error) throw error;
-
-                    if (!calificaciones || calificaciones.length === 0) {
-                        calificacionesMensaje.textContent = `Aún no tienes calificaciones registradas en ${curso}.`;
-                        calificacionesDisplay.innerHTML = '';
+                    if (!data || data.length === 0) {
+                        calificacionesDisplay.innerHTML = `<p class="mensaje-vacio">Aún no tienes calificaciones en este curso.</p>`;
                         return;
                     }
 
-                    calificacionesMensaje.textContent = '';
                     calificacionesDisplay.innerHTML = `
                         <table class="calificaciones-table">
-                            <thead>
-                                <tr><th>Trabajo/Examen</th><th>Nota</th><th>Retroalimentación</th><th>Estado</th><th>Fecha</th></tr>
-                            </thead>
+                            <thead><tr><th>Evaluación</th><th>Nota</th><th>Estado</th></tr></thead>
                             <tbody>
-                                ${calificaciones.map(ev => {
-                                    const estadoClass = (ev.estado || '').toLowerCase().replace(' ', '-');
-                                    return `
-                                        <tr>
-                                            <td>${ev.titulo_trabajo || 'N/A'}</td>
-                                            <td>${ev.nota || 'N/A'}/100</td>
-                                            <td>${ev.retroalimentacion || 'Sin retroalimentación.'}</td>
-                                            <td><span class="status-badge ${estadoClass}">${ev.estado || 'N/A'}</span></td>
-                                            <td>${ev.fecha_actualizacion || 'N/A'}</td>
-                                        </tr>
-                                    `;
+                                ${data.map(cal => {
+                                    const nota = parseFloat(cal.nota); // CORREGIDO: Usa la columna 'nota'
+                                    const [statusClass, statusText] = isNaN(nota) ? ['en-curso', 'N/A'] : (nota >= 3.0 ? ['aprobado', 'Aprobado'] : ['reprobado', 'Reprobado']);
+                                    return `<tr>
+                                        <td>${cal.evaluacion_titulo || 'N/A'}</td>
+                                        <td>${isNaN(nota) ? 'N/A' : nota.toFixed(2)}</td>
+                                        <td><span class="status-badge ${statusClass}">${statusText}</span></td>
+                                    </tr>`;
                                 }).join('')}
                             </tbody>
-                        </table>
-                    `;
+                        </table>`;
                 } catch (err) {
-                    console.error("Error cargando calificaciones:", err);
-                    calificacionesMensaje.textContent = "Error al cargar tus calificaciones.";
+                    console.error("Error al cargar calificaciones:", err);
+                    calificacionesDisplay.innerHTML = `<p class="mensaje-vacio">Error al cargar calificaciones.</p>`;
                 }
             }
 
-            // Iniciar la carga de los cursos al cargar la página
             cargarCursos();
         });
     </script>
