@@ -6,7 +6,8 @@ const logoutBtn = document.getElementById("logoutBtn");
 if (loginBtn) {
   if (loggedUser) {
     loginBtn.textContent = "👤 " + loggedUser;
-    loginBtn.style.backgroundColor = "#4caf50";
+    loginBtn.style.backgroundColor = "#d6ff41";
+    loginBtn.style.color = "#5d740cff";
 
     // Mostrar/ocultar menú al hacer click
     loginBtn.onclick = () => {
