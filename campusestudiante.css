@@ -1,0 +1,288 @@
+ body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background: #f0f7ff;
+            color: #333;
+        }
+        /* --- Header --- */
+        header {
+            background: white;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 700;
+            font-size: 1.2em;
+            color: #333;
+            text-decoration: none;
+        }
+        .logo img, .logo svg {
+            height: 45px;
+        }
+        .header-right {
+            position: relative;
+        }
+        #loginboton {
+            background: linear-gradient(90deg, #6dd5ed, #2193b0);
+            color: white;
+            border: none;
+            padding: 10px 25px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        #loginboton:hover {
+            transform: scale(1.05);
+        }
+        #userMenu {
+            display: none;
+            position: absolute;
+            top: 110%;
+            right: 0;
+            background-color: white;
+            min-width: 180px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+            padding: 10px;
+            z-index: 100;
+        }
+        #userMenu a {
+            display: block;
+            padding: 10px 15px;
+            color: #333;
+            text-decoration: none;
+            border-radius: 8px;
+        }
+        #userMenu a:hover {
+            background-color: #f0f7ff;
+        }
+        /* --- Estilos para el nuevo selector de cursos --- */
+        .course-selector-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 0 auto; /* Centra el selector en el espacio disponible */
+            padding: 0 20px;
+        }
+        .course-selector-container label {
+            font-weight: 600;
+            color: #507d96;
+        }
+        #course-selector {
+            font-family: 'Poppins', sans-serif;
+            padding: 8px 30px 8px 15px;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            font-size: 1em;
+            font-weight: 500;
+            cursor: pointer;
+            background-color: white;
+            transition: border-color 0.3s ease;
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%23507d96' viewBox='0 0 16 16'%3E%3Cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 10px center;
+        }
+        #course-selector:hover {
+            border-color: #2193b0;
+        }
+        /* --- Main Campus Content --- */
+        main {
+            padding: 40px 20px;
+            max-width: 1200px;
+            margin: auto;
+        }
+        .welcome-banner {
+            background: linear-gradient(90deg, #2193b0, #6dd5ed);
+            color: white;
+            padding: 30px;
+            border-radius: 20px;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 30px rgba(33, 147, 176, 0.3);
+        }
+        .welcome-banner h2 {
+            margin: 0;
+            font-size: 2.2em;
+        }
+        .welcome-banner p {
+            margin: 5px 0 0;
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+        /* --- Campus Navigation --- */
+        .campus-nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            background: white;
+            padding: 8px;
+            border-radius: 15px;
+            margin-bottom: 40px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+        }
+        .campus-nav button {
+            flex: 1;
+            padding: 12px 20px;
+            border: none;
+            background: transparent;
+            border-radius: 10px;
+            font-size: 1em;
+            font-weight: 600;
+            cursor: pointer;
+            color: #507d96;
+            transition: all 0.3s ease;
+        }
+        .campus-nav button.active {
+            background: linear-gradient(90deg, #6dd5ed, #2193b0);
+            color: white;
+            box-shadow: 0 5px 15px rgba(33, 147, 176, 0.2);
+        }
+        /* --- Content Sections --- */
+        .campus-section {
+            display: none;
+        }
+        .campus-section.active {
+            display: block;
+        }
+        /* --- Mensaje Vacío --- */
+        .mensaje-vacio {
+            text-align: center;
+            padding: 50px;
+            background: white;
+            border-radius: 15px;
+            color: #777;
+        }
+        /* --- Estilos para las Tablas de Contenido --- */
+.calificaciones-table {
+    width: 100%;                  /* Ocupa todo el ancho disponible */
+    border-collapse: collapse;      /* Une los bordes de las celdas para un look limpio */
+    margin-top: 20px;               /* Añade espacio arriba */
+    background-color: white;        /* Fondo blanco para la tabla */
+    border-radius: 15px;            /* Bordes redondeados consistentes con tu diseño */
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05); /* Sombra suave */
+    overflow: hidden;               /* Asegura que el contenido respete los bordes redondeados */
+    font-size: 0.95em;              /* Ajusta el tamaño de la fuente si es necesario */
+}
+
+/* Encabezados de la tabla (Evaluación, Nota, etc.) */
+.calificaciones-table th {
+    background-color: #f0f7ff;      /* Un azul muy claro para el fondo del encabezado */
+    color: #2193b0;                 /* Color principal de tu tema para el texto */
+    font-weight: 600;               /* Texto en negrita semipesada */
+    padding: 15px;                  /* Espaciado interno generoso */
+    text-align: left;               /* Alineación del texto a la izquierda */
+    border-bottom: 2px solid #ddd;  /* Línea divisoria más gruesa para el encabezado */
+}
+
+/* Celdas de la tabla (los datos) */
+.calificaciones-table td {
+    padding: 15px;                  /* Mismo espaciado que los encabezados */
+    color: #333;                     /* Color de texto oscuro y legible */
+    border-bottom: 1px solid #eaf6ff; /* Línea divisoria muy sutil entre filas */
+}
+
+/* Filas de la tabla en el cuerpo */
+.calificaciones-table tbody tr {
+    transition: background-color 0.2s ease; /* Transición suave para el hover */
+}
+
+/* Efecto cebra: colorea las filas pares */
+.calificaciones-table tbody tr:nth-child(even) {
+    background-color: #f8fcff;      /* Color de fondo ligeramente diferente para filas pares */
+}
+
+/* Efecto al pasar el mouse sobre una fila */
+.calificaciones-table tbody tr:hover {
+    background-color: #eaf6ff;      /* Resalta la fila al pasar el mouse */
+}
+
+/* Elimina el borde de la última fila para un acabado perfecto */
+.calificaciones-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* --- ESTILO PARA LAS LISTAS (Material, Exámenes, Clase Virtual) --- */
+
+/* Contenedor principal de la lista */
+.material-list {
+    list-style-type: none; /* Quita los puntos de la lista */
+    padding: 0;
+    margin: 20px 0 0 0;
+}
+
+/* Cada elemento de la lista (se verá como una tarjeta) */
+.material-list li {
+    display: flex;
+    justify-content: space-between; /* Alinea el título a la izq. y el botón a la der. */
+    align-items: center;
+    background-color: white;
+    padding: 15px 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+    margin-bottom: 12px;
+    transition: all 0.2s ease-in-out;
+}
+
+/* Efecto al pasar el mouse sobre un elemento */
+.material-list li:hover {
+    transform: translateY(-3px); /* Lo eleva ligeramente */
+    box-shadow: 0 6px 20px rgba(33, 147, 176, 0.15); /* Acentúa la sombra */
+}
+
+/* Título del material/examen */
+.material-list li span {
+    font-weight: 500;
+    color: #333;
+    font-size: 1.05em;
+}
+
+/* Botón (Ver, Unirse, Ir al Examen) */
+.material-list li a {
+    text-decoration: none;
+    color: white;
+    background: linear-gradient(90deg, #6dd5ed, #2193b0);
+    padding: 8px 25px;
+    border-radius: 20px; /* Forma de píldora */
+    font-weight: 600;
+    font-size: 0.9em;
+    transition: transform 0.2s ease;
+}
+
+/* Efecto al pasar el mouse sobre el botón */
+.material-list li a:hover {
+    transform: scale(1.05);
+}
+
+/* --- ESTILO MEJORADO PARA LOS MENSAJES (Cargando, Vacío, Error) --- */
+.mensaje-vacio {
+    /* Mantenemos los estilos base que ya tenías */
+    text-align: center;
+    padding: 50px;
+    background: white;
+    border-radius: 15px;
+    color: #777;
+
+    /* Nuevas mejoras */
+    padding-top: 100px; /* Más espacio arriba para un ícono */
+    font-size: 1.1em;
+    font-weight: 500;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+
+    /* Ícono SVG de fondo para darle más vida */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64' viewBox='0 0 24 24' fill='none' stroke='%23d0e9f3' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' class='feather feather-file-text'%3E%3Cpath d='M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z'%3E%3C/path%3E%3Cpolyline points='14 2 14 8 20 8'%3E%3C/polyline%3E%3Cline x1='16' y1='13' x2='8' y2='13'%3E%3C/line%3E%3Cline x1='16' y1='17' x2='8' y2='17'%3E%3C/line%3E%3Cpolyline points='10 9 9 9 8 9'%3E%3C/polyline%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: center 40px; /* Posiciona el ícono arriba del texto */
+    background-size: 50px;
+}
