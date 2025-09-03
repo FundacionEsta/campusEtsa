@@ -1,0 +1,445 @@
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #fcfcfc;
+    color: #333;
+}
+
+/* --- Header --- */
+header {
+    background: linear-gradient(90deg, #d5ff3f, #606b00);
+    color: white;
+    padding: 12px 20px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 500;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+header button {
+    background: rgba(255, 255, 255, 0.9);
+    color: #606b00;
+    border: none;
+    border-radius: 20px;
+    padding: 8px 18px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+header button:hover {
+    background: white;
+    transform: scale(1.05);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* --- Main Navigation --- */
+nav {
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0px 30px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    height: 60px;
+}
+nav .left {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-weight: bold;
+}
+nav .logo img {
+    height: 45px;
+}
+nav .buttons {
+    display: flex;
+    gap: 12px;
+}
+nav .buttons button {
+    border: none;
+    border-radius: 25px;
+    padding: 10px 22px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+nav .buttons button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+.btn-info {
+    background: linear-gradient(90deg, #d5ff3f, #606b00);
+    color: #ffffff;
+}
+.btn-login {
+    background: #333;
+    color: white;
+}
+
+/* --- Secondary Menu --- */
+.menu {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    width: 100%;
+    padding: 18px;
+    background: linear-gradient(90deg, #d5ff3f, #606b00);
+    border-bottom: 1px solid #606b00;
+    font-weight: 1600;
+    position: sticky;
+    top: 60px;
+    z-index: 999;
+}
+.menu a {
+    text-decoration: none;
+    color: #ffffff;
+    position: relative;
+    padding: 5px 0;
+    transition: color 0.3s ease;
+}
+.menu a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    width: 0%;
+    height: 3px;
+    background: linear-gradient(90deg, #d5ff3f, #606b00);
+    border-radius: 2px;
+    transition: width 0.4s ease;
+}
+.menu a:hover {
+    color: #d5ff3f;
+}
+.menu a:hover::after {
+    width: 100%;
+}
+
+/* --- Canva Styles - Intro, Misión, Visión, Contacto --- */
+.hero-canva {
+    text-align: center;
+    padding: 80px 20px 40px;
+    position: relative;
+}
+.hero-canva .logo-hero img {
+    height: 120px;
+    margin-bottom: 10px;
+}
+.hero-canva .logo-hero h1 {
+    font-size: 5em;
+    margin: 0;
+    letter-spacing: 5px;
+    color: #606b00;
+}
+.hero-canva .logo-hero p {
+    font-size: 1.5em;
+    color: #555;
+    margin-top: 0;
+    letter-spacing: 2px;
+}
+.deco-hero-line {
+    width: 250px;
+    height: 4px;
+    background: #606b00;
+    margin: 20px auto 0;
+    transform: rotate(15deg);
+}
+
+.intro-canva, .mision-vision-canva, .nuevo-curso-canva, .contact-canva {
+    padding: 60px 20px;
+    max-width: 1200px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+}
+.intro-canva .canva-text-block,
+.mision-vision-canva .canva-text-block {
+    flex: 1;
+    position: relative;
+}
+.intro-canva .canva-text-block h2,
+.mision-vision-canva .canva-text-block h2 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    position: relative;
+}
+.intro-canva .canva-image-block,
+.mision-vision-canva .canva-image-block {
+    flex: 1;
+    position: relative;
+}
+.intro-canva .canva-image-block img,
+.mision-vision-canva .canva-image-block img {
+    width: 100%;
+    border-radius: 15px;
+}
+.canva-deco-circle {
+    position: absolute;
+    border-radius: 50%;
+}
+.canva-deco-circle.green {
+    width: 100px;
+    height: 100px;
+    background: #d5ff3f;
+    top: -30px;
+    left: -50px;
+    z-index: -1;
+}
+.canva-deco-circle-small.dark {
+    width: 50px;
+    height: 50px;
+    background: #606b00;
+    bottom: 20px;
+    right: 20px;
+}
+.canva-deco-circle-large.green-light {
+    width: 120px;
+    height: 120px;
+    background: #e1f71a;
+    bottom: -20px;
+    left: -40px;
+    z-index: -1;
+}
+.canva-deco-circle-large.green-dark {
+    width: 150px;
+    height: 150px;
+    background: #606b00;
+    top: -50px;
+    right: -50px;
+    z-index: -1;
+}
+
+/* --- Formación para todos (Modificado) --- */
+.facultades.canva-section {
+    padding: 5px 10px;
+    max-width: 1200px;
+    margin: auto;
+    text-align: center;
+}
+.facultades.canva-section h2 {
+    font-size: 2.5em;
+    color: #333;
+    margin-bottom: 40px;
+}
+.facultades-grid.canva-style {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    justify-items: center;
+}
+.facultad-card.canva-card {
+    background: none;
+    box-shadow: none;
+    border-radius: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0;
+}
+.facultad-card.canva-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 15px;
+}
+.facultad-card.canva-card .card-label {
+    background: #e1f71a;
+    padding: 8px 20px;
+    border-radius: 20px;
+    font-weight: bold;
+    color: #606b00;
+    margin-top: 10px;
+}
+
+/* --- Nuevo Curso --- */
+.nuevo-curso-canva {
+    position: relative;
+    padding: 80px 20px;
+    background: #f0f0f0;
+}
+.nuevo-curso-tag {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background: #d5ff3f;
+    color: #606b00;
+    font-weight: bold;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transform: rotate(-10deg);
+}
+.nuevo-curso-canva .curso-content {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+.nuevo-curso-canva .curso-text {
+    flex: 1;
+}
+.nuevo-curso-canva .curso-text h2 {
+    font-size: 2.5em;
+    line-height: 1.2;
+}
+.nuevo-curso-canva .curso-text button {
+    background: #606b00;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 30px;
+    font-weight: bold;
+    margin-top: 20px;
+}
+.nuevo-curso-canva .curso-image {
+    flex: 1;
+}
+.nuevo-curso-canva .curso-image img {
+    width: 100%;
+    border-radius: 15px;
+}
+
+/* --- Contacto --- */
+.contact-canva {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 80px 20px;
+    max-width: 1200px;
+    margin: auto;
+    position: relative;
+}
+.contact-canva .contact-left {
+    flex: 1;
+    position: relative;
+}
+.contact-canva .contact-left h2 {
+    font-size: 3em;
+    margin-bottom: 20px;
+    position: relative;
+}
+.contact-canva .contact-left ul {
+    list-style: none;
+    padding: 0;
+}
+.contact-canva .contact-left li {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-size: 1.2em;
+    margin-bottom: 10px;
+}
+.contact-canva .contact-left li img {
+    height: 24px;
+}
+.contact-canva .contact-right {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.contact-canva .contact-right img {
+    max-width: 100%;
+    height: auto;
+}
+.contact-deco-circle {
+    position: absolute;
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    background: rgba(106, 118, 5, 0.4);
+    top: -50px;
+    left: -50px;
+    z-index: -1;
+}
+
+
+/* --- Courses & Diplomados Section (Sin cambios) --- */
+.cursos, .diplomados {
+    padding: 50px 20px;
+    max-width: 1200px;
+    margin: 60px auto;
+    background: #fff;
+    border-radius: 20px;
+}
+.cursos h2, .diplomados h2 {
+    text-align: center;
+    margin-bottom: 40px;
+    font-size: 2.2em;
+    color: #333;
+}
+.cursos-grid, .diplomados-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+}
+.curso-card {
+    background: #fdfdff;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.3s ease;
+}
+.curso-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+}
+.curso-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+.curso-card-content {
+    padding: 20px;
+}
+.curso-card h3 {
+    margin: 0 0 10px;
+    font-size: 1.2em;
+    color: #333;
+}
+.curso-card p {
+    font-size: 1em;
+    color: #666;
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
+.curso-card button {
+    background: linear-gradient(90deg, #606b00, #d5ff3f);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+.curso-card button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* --- WhatsApp Button --- */
+.whatsapp {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    background: #25d366;
+    border-radius: 50%;
+    padding: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    transition: transform 0.3s ease;
+}
+.whatsapp img {
+    width: 40px;
+    height: 40px;
+    display: block;
+}
+.whatsapp:hover {
+    transform: scale(1.1) rotate(10deg);
+}
