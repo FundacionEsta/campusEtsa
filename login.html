@@ -2,93 +2,104 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-   <meta name="viewport" content="width=device-width, initial-scale=0.57">
-    <title>Login & Registro</title>
-    <!-- Importa la fuente Inter de Google Fonts -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acceso al Campus</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
+        /* Paleta de Colores:
+           Verde Oscuro (Fondo): #606b00
+           Verde Lima (Acento): #d5ff3f
+        */
+
         /* Estilos generales del cuerpo */
         body {
             font-family: 'Inter', sans-serif;
             margin: 0;
-            padding: 0;
+            padding: 20px;
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            background: linear-gradient(135deg, #7df3f3 0%, #ffa7ff 100%); /* Color de fondo base */
-        }
-
-        /* Contenedor principal para el formulario y el título */
-        .login-container {
-            background-color: #fff;
-            padding: 2rem 2.5rem;
-            border-radius: 12px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-            width: 380px;
-            text-align: center;
+            background-color: #606b00; /* Color de fondo base */
+            background-image: radial-gradient(circle, #7d8a00, #606b00);
             box-sizing: border-box;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
-        /* Efecto al pasar el cursor */
-        .login-container:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+        /* Contenedor principal para el formulario */
+        .form-container {
+            background-color: rgba(0, 0, 0, 0.2); /* Fondo oscuro semitransparente */
+            padding: 2.5rem 3rem;
+            border-radius: 16px;
+            border: 1px solid rgba(213, 255, 63, 0.2);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+            backdrop-filter: blur(10px); /* Efecto "glassmorphism" */
+            -webkit-backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
         }
 
+        .logo {
+            max-width: 130px;
+            margin-bottom: 20px;
+        }
+        
         /* Título del formulario */
         .form-title {
-            font-size: 2em;
+            font-size: 2.2em;
             font-weight: 700;
-            color: #333;
-            margin-bottom: 20px;
+            color: #fff;
+            margin-bottom: 25px;
         }
 
         /* Estilos de los campos de entrada (inputs) */
         .input-group {
-            position: relative;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
         }
         
         .input-group input {
             width: 100%;
-            padding: 12px 15px;
-            border: 1px solid #ced4da;
+            padding: 14px 18px;
+            background-color: rgba(0, 0, 0, 0.25);
+            border: 1px solid #7d8a00;
             border-radius: 8px;
             box-sizing: border-box;
             font-size: 1em;
-            color: #495057;
+            color: #f0f0f0;
             transition: border-color 0.3s ease, box-shadow 0.3s ease;
         }
 
         .input-group input::placeholder {
-            color: #adb5bd;
+            color: #a0a0a0;
         }
 
         .input-group input:focus {
-            border-color: #007bff;
-            box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+            border-color: #d5ff3f; /* Color de acento al enfocar */
+            box-shadow: 0 0 0 3px rgba(213, 255, 63, 0.25);
             outline: none;
         }
 
         /* Estilos del botón */
         .btn-submit {
             width: 100%;
-            padding: 14px;
-            background-color: blueviolet;
-            color: #fff;
+            padding: 15px;
+            background-color: #d5ff3f; /* Color de acento */
+            color: #606b00; /* Color de fondo para el texto */
             border: none;
             border-radius: 8px;
             font-size: 1.1em;
-            font-weight: 600;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
             cursor: pointer;
-            transition: background-color 0.3s ease, transform 0.1s ease;
+            transition: background-color 0.3s ease, transform 0.1s ease, box-shadow 0.3s ease;
         }
 
         .btn-submit:hover {
-            background-color: #0056b3;
-            transform: translateY(-2px);
+            background-color: #e0ff6b;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(213, 255, 63, 0.2);
         }
 
         .btn-submit:active {
@@ -97,21 +108,20 @@
 
         /* Estilos para el texto de cambio de formulario */
         .form-switch-text {
-            font-size: 0.9em;
-            color: #6c757d;
-            margin-top: 20px;
+            font-size: 0.95em;
+            color: rgba(255, 255, 255, 0.7);
+            margin-top: 25px;
         }
 
-        /* Botón de alternar formulario */
         .form-switch-text a {
-            color: #007bff;
+            color: #d5ff3f; /* Color de acento */
             text-decoration: none;
             font-weight: 600;
             transition: color 0.3s ease;
         }
 
         .form-switch-text a:hover {
-            color: #0056b3;
+            color: #fff;
             text-decoration: underline;
         }
 
@@ -124,12 +134,11 @@
 </head>
 <body>
 
-<div class="login-container">
+<div class="form-container">
 
-  <img src="logomdi.png" width="150" height="100" alt="Logo ETSA" style="position: center;">
+    <img src="logomdi.png" alt="Logo de la Institución" class="logo">
     <h2 class="form-title">Login</h2>
     
-    <!-- Formulario de Login -->
     <form id="loginForm">
         <div class="input-group">
             <input type="text" id="loginUsuario" placeholder="Usuario" required>
@@ -140,26 +149,24 @@
         <button type="submit" class="btn-submit">Entrar</button>
     </form>
 
-    <!-- Formulario de Registro -->
     <form id="registroForm">
         <div class="input-group">
             <input type="text" id="usuario" placeholder="Usuario" required>
         </div>
         <div class="input-group">
-            <input type="email" id="email" placeholder="Correo" required>
+            <input type="email" id="email" placeholder="Correo Electrónico" required>
         </div>
         <div class="input-group">
             <input type="password" id="password" placeholder="Contraseña" required>
         </div>
         <div class="input-group">
-            <input type="password" id="password2" placeholder="Repite Contraseña" required>
+            <input type="password" id="password2" placeholder="Repetir Contraseña" required>
         </div>
         <button type="submit" class="btn-submit">Registrar</button>
     </form>
 
-    <!-- Enlace para cambiar entre formularios -->
     <p class="form-switch-text">
-        <a href="#" id="toggleFormLink">¿No tienes cuenta? Regístrate aquí</a>
+        <a href="#" id="toggleFormLink">¿No tienes cuenta? Regístrate</a>
     </p>
 
 </div>
@@ -171,23 +178,39 @@
     const formTitle = document.querySelector('.form-title');
     const toggleFormLink = document.getElementById('toggleFormLink');
 
+    /**
+     * Función para mostrar el formulario de Login y ocultar el de Registro.
+     */
+    function switchToLogin() {
+        loginForm.style.display = 'block';
+        registroForm.style.display = 'none';
+        formTitle.textContent = 'Login';
+        toggleFormLink.innerHTML = '¿No tienes cuenta? <strong>Regístrate</strong>';
+    }
+
+    /**
+     * Función para mostrar el formulario de Registro y ocultar el de Login.
+     */
+    function switchToRegister() {
+        loginForm.style.display = 'none';
+        registroForm.style.display = 'block';
+        formTitle.textContent = 'Registro';
+        toggleFormLink.innerHTML = '¿Ya tienes cuenta? <strong>Inicia sesión</strong>';
+    }
+
     // Manejador de eventos para el enlace de alternar
     toggleFormLink.addEventListener('click', function(event) {
         event.preventDefault(); // Evita que la página se recargue
-
         // Alterna la visibilidad de los formularios
         if (loginForm.style.display === 'none') {
-            loginForm.style.display = 'block';
-            registroForm.style.display = 'none';
-            formTitle.textContent = 'Login';
-            toggleFormLink.textContent = '¿No tienes cuenta? Regístrate aquí';
+            switchToLogin();
         } else {
-            loginForm.style.display = 'none';
-            registroForm.style.display = 'block';
-            formTitle.textContent = 'Registro';
-            toggleFormLink.textContent = '¿Ya tienes cuenta? Inicia sesión aquí';
+            switchToRegister();
         }
     });
+
+
+
 </script>
 
 <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
