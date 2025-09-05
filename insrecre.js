@@ -33,29 +33,44 @@ if (formInscripcion) {
 
   if (!nombreCompleto || !nombreUsuario || !correo) {
     alert("Por favor completa todos los campos.");
+    submitBtn.disabled = false;
+    submitBtn.textContent = 'Inscribirme ahora';
     return;
   }
+   try {
+      // Step 1: Find the user's ID in the 'usuarios' table
+      const { data: userData, error: userError } = await supabaseClient
+        .from('usuarios')
+        .select('id')
+        .eq('usuario', nombreUsuario)
+        .single();
 
-  try {
+      if (userError || !userData) {
+        throw new Error("No se pudo encontrar el ID del usuario.");
+      }
+
+     
+
+     const estudianteId = userData.id;
     // Guardar en Supabase
-    const { data, error } = await supabaseClient
+    const { data: inscripcionData, error:inscripcionError } = await supabaseClient
       .from("recreacion_con_proposito")
       .insert([
         {
           nombre_completo: nombreCompleto,
           nombre_usuario: nombreUsuario,
           correo: correo,
+          estudiante_id: estudianteId,
           curso_nombre :"recreacion_con_proposito"
         }
       ]);
 
-    if (error) throw error;
+   if (inscripcionError) throw inscripcionError;
 
-    alert("¡Inscripción guardada correctamente!");
-    formInscripcion.reset();
+      alert("¡Inscripción guardada correctamente!");
 
-    // Enviar correo
-    await enviarCorreo(nombreCompleto, correo); // <- usar await y async
+      // Step 3: Send confirmation email (ONLY if the save was successful)
+      await enviarCorreo(nombreCompleto, correo);// <- usar await y async
 
     // Redirigir después
     window.location.href = "recreacion.html";
@@ -63,6 +78,8 @@ if (formInscripcion) {
   } catch (err) {
     console.error("Error:", err);
     alert("Ocurrió un error... o el usuario ya esta registrado");
+     submitBtn.disabled = false;
+      submitBtn.textContent = 'Inscribirme ahora';
   }
 });
 }

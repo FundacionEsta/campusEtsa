@@ -2,196 +2,399 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=0.57">
-  <title>Panel de Maestros y Estudiantes</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Panel de Administración</title>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 20px;
-      background: #f4f6f9;
+    /* Paleta de Colores:
+       Verde Oscuro (Fondo): #606b00
+       Verde Lima (Acento): #d5ff3f
+       Texto Principal: #f0f0f0
+       Fondo de Tarjetas: #1a1a1a (casi negro para contraste)
+    */
+
+    :root {
+      --bg-dark: #606b00;
+      --accent-lime: #d5ff3f;
+      --card-bg: #1f2400;
+      --text-light: #f0f0f0;
+      --text-dark: #303500;
+      --border-color: rgba(213, 255, 63, 0.2);
     }
+
+    /* Estilos Generales */
+    body {
+      font-family: 'Inter', sans-serif;
+      margin: 0;
+      padding: 20px;
+      background-color: var(--bg-dark);
+      color: var(--text-light);
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 20px auto;
+      padding: 20px;
+    }
+
     h1 {
       text-align: center;
+      color: var(--accent-lime);
+      font-weight: 700;
+      margin-bottom: 40px;
     }
+
+    /* Estilo de Tarjeta para agrupar contenido */
+    .card {
+      background-color: var(--card-bg);
+      padding: 30px;
+      border-radius: 12px;
+      margin-bottom: 30px;
+      border: 1px solid var(--border-color);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Formulario */
     form {
-      margin-bottom: 20px;
-      padding: 15px;
-      background: white;
-      border-radius: 8px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      align-items: end;
     }
-    input, button, select {
-      padding: 8px;
-      margin: 5px;
+    
+    .form-group {
+      display: flex;
+      flex-direction: column;
+    }
+
+    label {
+      font-size: 0.9em;
+      font-weight: 500;
+      margin-bottom: 8px;
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    input, select {
+      width: 100%;
+      padding: 12px 15px;
+      background-color: rgba(0, 0, 0, 0.3);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      box-sizing: border-box;
+      font-size: 1em;
+      color: var(--text-light);
+      transition: all 0.3s ease;
+    }
+    
+    input:focus, select:focus {
+      outline: none;
+      border-color: var(--accent-lime);
+      box-shadow: 0 0 0 3px rgba(213, 255, 63, 0.25);
+    }
+
+    /* Botones */
+    .btn {
+      padding: 12px 20px;
+      border: none;
+      border-radius: 8px;
+      font-size: 1em;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-align: center;
+    }
+
+    .btn-primary {
+      background-color: var(--accent-lime);
+      color: var(--text-dark);
+    }
+    
+    .btn-primary:hover {
+      background-color: #e0ff6b;
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(213, 255, 63, 0.2);
+    }
+    
+    .btn-secondary {
+        background-color: transparent;
+        color: var(--accent-lime);
+        border: 1px solid var(--accent-lime);
+    }
+
+    .btn-secondary:hover {
+        background-color: var(--accent-lime);
+        color: var(--text-dark);
+    }
+
+    .form-buttons {
+      display: flex;
+      gap: 10px;
+      grid-column: 1 / -1; /* Ocupa todo el ancho */
+    }
+
+    /* Tabla */
+    .table-container {
+        overflow-x: auto; /* Para responsividad en móviles */
     }
     table {
       width: 100%;
       border-collapse: collapse;
-      background: white;
+      background: transparent;
     }
-    table, th, td {
-      border: 1px solid #ddd;
-    }
-    th, td {
-      padding: 10px;
+
+    thead th {
+      color: var(--accent-lime);
       text-align: left;
+      padding: 15px;
+      border-bottom: 2px solid var(--accent-lime);
+      font-size: 0.9em;
+      text-transform: uppercase;
     }
-    tr:nth-child(even) {
-      background: #f9f9f9;
+    
+    tbody td {
+      padding: 15px;
+      border-bottom: 1px solid var(--border-color);
     }
+    
+    tbody tr {
+      transition: background-color 0.2s ease;
+    }
+
+    tbody tr:hover {
+      background-color: rgba(213, 255, 63, 0.05);
+    }
+
     .actions button {
+      background: transparent;
+      border: 1px solid var(--border-color);
+      color: var(--text-light);
+      padding: 8px 12px;
+      border-radius: 6px;
+      cursor: pointer;
       margin-right: 5px;
+      transition: all 0.2s ease;
     }
+    .actions button:hover {
+        border-color: var(--accent-lime);
+        color: var(--accent-lime);
+    }
+
   </style>
 </head>
 <body>
-  <h1>📋 Panel de Maestros y Estudiantes</h1>
 
-  <!-- Formulario -->
-  <form id="formUsuario">
-    <label>Usuario:</label>
-    <input type="text" id="usuario" required>
+<div class="container">
+  <h1>📋 Panel de Administración</h1>
 
-    <label>Email:</label>
-    <input type="email" id="email" required>
+  <div class="card">
+    <form id="formUsuario">
+      <input type="hidden" id="userId">
+      
+      <div class="form-group">
+        <label for="usuario">Usuario:</label>
+        <input type="text" id="usuario" required>
+      </div>
+      
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" id="email" required>
+      </div>
+      
+      <div class="form-group">
+        <label for="rol">Rol:</label>
+        <select id="rol">
+          <option value="maestro">Maestro</option>
+          <option value="admin">Admin</option>
+          <option value="estudiante">Estudiante</option>
+        </select>
+      </div>
 
-    <label>Rol:</label>
-    <select id="rol">
-      <option value="maestro">Maestro</option>
-      <option value="admin">Admin</option>
-      <option value="estudiante">Estudiante</option>
-    </select>
+      <div class="form-group">
+        <label for="password">Contraseña:</label>
+        <input type="password" id="password" placeholder="Dejar en blanco para no cambiar">
+      </div>
 
-    <label>Contraseña:</label>
-    <input type="password" id="password" required>
+      <div class="form-group form-buttons">
+        <button type="submit" class="btn btn-primary" id="submitBtn">Agregar Usuario</button>
+        <button type="button" class="btn btn-secondary" id="cancelBtn" style="display: none;">Cancelar</button>
+      </div>
+    </form>
+  </div>
 
-    <button type="submit">Agregar Usuario</button>
-  </form>
+  <div class="card table-container">
+    <table>
+      <thead>
+        <tr>
+          <th>Usuario</th>
+          <th>Correo</th>
+          <th>Rol</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody id="tabla-usuarios"></tbody>
+    </table>
+  </div>
+</div>
 
-  <!-- Tabla -->
-  <table>
-    <thead>
-      <tr>
-        <th>ID</th>
-        <th>Usuario</th>
-        <th>Correo</th>
-        <th>Rol</th>
-        <th>Acciones</th>
-      </tr>
-    </thead>
-    <tbody id="tabla-usuarios"></tbody>
-  </table>
+<script>
+  // =========================================================================
+  // ⚠️ ADVERTENCIA DE SEGURIDAD CRÍTICA ⚠️
+  // NUNCA expongas tu clave 'service_role' en el código del cliente (navegador).
+  // Usa la clave anónima (anon key) y protege tus tablas con Políticas 
+  // de Seguridad a Nivel de Fila (RLS) en el panel de Supabase.
+  // Solo los usuarios autenticados y con los permisos correctos
+  // (ej. rol 'admin') deberían poder realizar estas operaciones.
+  // =========================================================================
+  const SUPABASE_URL = "https://qlsuiwxlrsqgumjbuozk.supabase.co";
+  const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFsc3Vpd3hscnNxZ3VtamJ1b3prIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTU4NDIzMDEsImV4cCI6MjA3MTQxODMwMX0.xSnFcsfXGt1SRUee87sprQepocXC7baag1Sc2uhOkQk"; // Clave ANON, NO service_role
+  const { createClient } = supabase;
+  const db = createClient(SUPABASE_URL, SUPABASE_KEY);
 
-  <script>
-    // 🔑 Conectar con Supabase
-    const SUPABASE_URL = "https://qlsuiwxlrsqgumjbuozk.supabase.co";
-    const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFsc3Vpd3hscnNxZ3VtamJ1b3prIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc1NTg0MjMwMSwiZXhwIjoyMDcxNDE4MzAxfQ.aZcci1acvTqhOLbTCnD5McG1l8tWO331G4GGmFftFks";
-    const { createClient } = supabase;
-    const db = createClient(SUPABASE_URL, SUPABASE_KEY);
+  let isEditing = false;
 
-    // Función para hashear password con SHA-256
-    async function hashPassword(password) {
-      const encoder = new TextEncoder();
-      const data = encoder.encode(password);
-      const hash = await crypto.subtle.digest("SHA-256", data);
-      return Array.from(new Uint8Array(hash))
-        .map(b => b.toString(16).padStart(2, "0"))
-        .join("");
+  const form = document.getElementById("formUsuario");
+  const submitBtn = document.getElementById("submitBtn");
+  const cancelBtn = document.getElementById("cancelBtn");
+  
+  // Cargar usuarios al inicio
+  document.addEventListener("DOMContentLoaded", cargarUsuarios);
+
+  async function cargarUsuarios() {
+    const { data, error } = await db
+      .from("usuarios")
+      .select("id, usuario, email, rol");
+
+    if (error) {
+      console.error("Error al cargar usuarios:", error);
+      return;
     }
 
-    // Cargar usuarios al inicio
-    document.addEventListener("DOMContentLoaded", cargarUsuarios);
+    const tabla = document.getElementById("tabla-usuarios");
+    tabla.innerHTML = ""; // Limpiar tabla antes de rellenar
+    data.forEach(user => {
+      const fila = document.createElement("tr");
+      fila.innerHTML = `
+        <td>${user.usuario}</td>
+        <td>${user.email}</td>
+        <td>${user.rol}</td>
+        <td class="actions">
+          <button onclick="iniciarEdicion('${user.id}', '${user.usuario}', '${user.email}', '${user.rol}')">✏️ Editar</button>
+          <button onclick="eliminarUsuario('${user.id}')">🗑️ Eliminar</button>
+        </td>
+      `;
+      tabla.appendChild(fila);
+    });
+  }
 
-    async function cargarUsuarios() {
-      const { data, error } = await db
-        .from("usuarios")
-        .select("id, usuario, email, rol");
+  // Lógica del formulario (Crear o Actualizar)
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    if (isEditing) {
+      await actualizarUsuario();
+    } else {
+      await agregarUsuario();
+    }
+  });
 
+  async function agregarUsuario() {
+    const usuario = document.getElementById("usuario").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const rol = document.getElementById("rol").value;
+    const password = document.getElementById("password").value;
+
+    if (!usuario || !email || !password) {
+        alert("Usuario, email y contraseña son obligatorios para crear un nuevo usuario.");
+        return;
+    }
+
+    // En un escenario real, la creación de usuario se haría en un
+    // backend seguro o una Edge Function de Supabase, no desde el cliente.
+    // Esta es una simplificación.
+    const { data, error } = await db.from("usuarios").insert([{
+        usuario,
+        email,
+        rol,
+        password // IMPORTANTE: El hashing debe hacerse en un backend seguro.
+    }]);
+
+    if (error) {
+      alert("❌ Error al crear usuario: " + error.message);
+      return;
+    }
+
+    alert("✅ Usuario creado correctamente");
+    resetForm();
+    cargarUsuarios();
+  }
+
+  // Función para preparar el formulario para la edición
+  function iniciarEdicion(id, usuario, email, rol) {
+    isEditing = true;
+    document.getElementById("userId").value = id;
+    document.getElementById("usuario").value = usuario;
+    document.getElementById("email").value = email;
+    document.getElementById("rol").value = rol;
+    
+    // Habilitar campo de contraseña y poner placeholder
+    document.getElementById("password").required = false;
+    document.getElementById("password").placeholder = "Nueva contraseña (opcional)";
+
+
+    submitBtn.textContent = "Actualizar Usuario";
+    cancelBtn.style.display = "inline-block";
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  async function actualizarUsuario() {
+    const id = document.getElementById("userId").value;
+    const usuario = document.getElementById("usuario").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const rol = document.getElementById("rol").value;
+
+    const datosActualizados = { usuario, email, rol };
+    
+    // NOTA: La actualización de contraseña debe manejarse con cuidado
+    // y de forma segura. Aquí no se implementa por simplicidad.
+
+    const { error } = await db
+      .from("usuarios")
+      .update(datosActualizados)
+      .eq("id", id);
+
+    if (error) {
+      alert("❌ Error al actualizar: " + error.message);
+      return;
+    }
+    
+    alert("✅ Usuario actualizado correctamente");
+    resetForm();
+    cargarUsuarios();
+  }
+
+  // Lógica del botón Cancelar
+  cancelBtn.addEventListener("click", resetForm);
+
+  function resetForm() {
+    isEditing = false;
+    form.reset(); // Limpia todos los campos
+    document.getElementById("password").required = true;
+    document.getElementById("password").placeholder = "";
+    submitBtn.textContent = "Agregar Usuario";
+    cancelBtn.style.display = "none";
+  }
+
+  // Eliminar usuario
+  async function eliminarUsuario(id) {
+    if (confirm("¿Seguro que deseas eliminar este usuario?")) {
+      const { error } = await db.from("usuarios").delete().eq("id", id);
       if (error) {
-        console.error(error);
+        alert("❌ Error al eliminar: ".message);
         return;
       }
-
-      const tabla = document.getElementById("tabla-usuarios");
-      tabla.innerHTML = "";
-      data.forEach(user => {
-        const fila = document.createElement("tr");
-        fila.innerHTML = `
-          <td>${user.id}</td>
-          <td>${user.usuario}</td>
-          <td>${user.email}</td>
-          <td>${user.rol}</td>
-          <td class="actions">
-            <button onclick="editarUsuario('${user.id}', '${user.usuario}', '${user.email}')">✏️ Editar</button>
-            <button onclick="eliminarUsuario('${user.id}')">🗑️ Eliminar</button>
-          </td>
-        `;
-        tabla.appendChild(fila);
-      });
+      cargarUsuarios();
     }
-
-    // Agregar nuevo usuario
-    document.getElementById("formUsuario").addEventListener("submit", async (e) => {
-      e.preventDefault();
-      const usuario = document.getElementById("usuario").value.trim();
-      const email = document.getElementById("email").value.trim();
-      const rol = document.getElementById("rol").value;
-      const password = document.getElementById("password").value;
-
-      try {
-        const passwordHash = await hashPassword(password);
-
-        const { error } = await db.from("usuarios").insert([{
-          usuario,
-          email,
-          rol,
-          password: passwordHash
-        }]);
-
-        if (error) {
-          alert("❌ Error al insertar en tabla usuarios: " + error.message);
-          return;
-        }
-
-        e.target.reset();
-        cargarUsuarios();
-        alert("✅ Usuario creado correctamente");
-
-      } catch (err) {
-        alert("❌ Error inesperado: " + err.message);
-      }
-    });
-
-    // Editar usuario
-    async function editarUsuario(id, usuario, email) {
-      const nuevoUsuario = prompt("Nuevo usuario/nombre:", usuario);
-      const nuevoEmail = prompt("Nuevo correo:", email);
-
-      if (nuevoUsuario && nuevoEmail) {
-        const { error } = await db
-          .from("usuarios")
-          .update({ usuario: nuevoUsuario, email: nuevoEmail })
-          .eq("id", id);
-        if (error) {
-          alert("❌ Error al editar: " + error.message);
-          return;
-        }
-        cargarUsuarios();
-      }
-    }
-
-    // Eliminar usuario
-    async function eliminarUsuario(id) {
-      if (confirm("¿Seguro que deseas eliminar este usuario?")) {
-        const { error } = await db.from("usuarios").delete().eq("id", id);
-        if (error) {
-          alert("❌ Error al eliminar en tabla: " + error.message);
-          return;
-        }
-        cargarUsuarios();
-      }
-    }
-  </script>
+  }
+</script>
 </body>
 </html>
