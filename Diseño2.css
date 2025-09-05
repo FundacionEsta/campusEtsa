@@ -1,7 +1,11 @@
 body {
     margin: 0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+<<<<<<< HEAD
+    background: #ffffff;
+=======
     background: #fcfcfc;
+>>>>>>> fa4ec7c727fb45455b80cfdb0fbf64f3c1f3cc16
     color: #333;
 }
 
@@ -128,8 +132,14 @@ nav .buttons button:hover {
     position: relative;
 }
 .hero-canva .logo-hero img {
+<<<<<<< HEAD
+    height: 440px;
+    margin-bottom: 10px;
+    
+=======
     height: 120px;
     margin-bottom: 10px;
+>>>>>>> fa4ec7c727fb45455b80cfdb0fbf64f3c1f3cc16
 }
 .hero-canva .logo-hero h1 {
     font-size: 5em;
@@ -174,12 +184,20 @@ nav .buttons button:hover {
 .intro-canva .canva-image-block,
 .mision-vision-canva .canva-image-block {
     flex: 1;
+<<<<<<< HEAD
+    position: CENTER;
+=======
     position: relative;
+>>>>>>> fa4ec7c727fb45455b80cfdb0fbf64f3c1f3cc16
 }
 .intro-canva .canva-image-block img,
 .mision-vision-canva .canva-image-block img {
     width: 100%;
     border-radius: 15px;
+<<<<<<< HEAD
+    position: CENTER;
+=======
+>>>>>>> fa4ec7c727fb45455b80cfdb0fbf64f3c1f3cc16
 }
 .canva-deco-circle {
     position: absolute;
@@ -351,11 +369,32 @@ nav .buttons button:hover {
     position: absolute;
     width: 250px;
     height: 250px;
+<<<<<<< HEAD
+    z-index: -1;
+    padding: auto;
+}
+
+.contact-right img {
+    border-radius: 15px;
+    position: center; 
+    display: center;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+    height: 210px;
+}
+
+.contact-deco-circle , li   {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+=======
     border-radius: 50%;
     background: rgba(106, 118, 5, 0.4);
     top: -50px;
     left: -50px;
     z-index: -1;
+>>>>>>> fa4ec7c727fb45455b80cfdb0fbf64f3c1f3cc16
 }
 
 
@@ -442,4 +481,8 @@ nav .buttons button:hover {
 }
 .whatsapp:hover {
     transform: scale(1.1) rotate(10deg);
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> fa4ec7c727fb45455b80cfdb0fbf64f3c1f3cc16
