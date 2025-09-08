@@ -46,34 +46,42 @@ document.getElementById("registroForm").addEventListener("submit", async (e) => 
 });
 
 // ========= LOGIN =========
+// ========= LOGIN =========
 document.getElementById("loginForm").addEventListener("submit", async (e) => {
-  e.preventDefault();
+  e.preventDefault();
 
-  const loginUsuario = document.getElementById("loginUsuario").value.trim();
-  const loginPassword = document.getElementById("loginPassword").value;
+  const loginUsuario = document.getElementById("loginUsuario").value.trim();
+  const loginPassword = document.getElementById("loginPassword").value;
 
-  const passwordHash = await hashPassword(loginPassword);
+  const passwordHash = await hashPassword(loginPassword);
 
-  // Buscar por usuario O email
-  const { data, error } = await supabaseClient
-    .from("usuarios")
-    .select("*")
-    .or(`usuario.eq.${loginUsuario},email.eq.${loginUsuario}`)
-    .eq("password", passwordHash)
-    .single();
+  // Buscar por usuario O email
+  const { data, error } = await supabaseClient
+    .from("usuarios")
+    .select("*")
+    .or(`usuario.eq.${loginUsuario},email.eq.${loginUsuario}`)
+    .eq("password", passwordHash)
+    .single();
 
-  if (error || !data) {
-    alert("❌ Usuario o contraseña incorrectos");
-  } else {
-    alert("✅ Bienvenido " + data.usuario + " (" + data.rol + ")");
-    localStorage.setItem("loggedUser", data.usuario);
-    localStorage.setItem("userRole", data.rol);
+  if (error || !data) {
+    alert("❌ Usuario o contraseña incorrectos");
+  } else {
+    alert("✅ Bienvenido " + data.usuario + " (" + data.rol + ")");
+    localStorage.setItem("loggedUser", data.usuario);
+    localStorage.setItem("userRole", data.rol);
 
-    // Redirigir según rol
-    if (data.rol === "maestro") {
-      window.location.href = "campusdocente.html"; // 👈 página exclusiva de maestros
-    } else {
-      window.location.href = "index.html"; // 👈 página de estudiantes
-    }
-  }
+    // ======================= INICIO DEL CAMBIO =======================
+    // Redirigir según el rol del usuario
+    if (data.rol === "admin") {
+      // Si el rol es 'admin', lo rediriges a index.html
+      window.location.href = "resgistro.html";
+    } else if (data.rol === "maestro") {
+      // Si el rol es 'maestro', va a su página específica
+      window.location.href = "campusdocente.html";
+    } else {
+      // Para cualquier otro rol (como 'estudiante'), también va a index.html
+      window.location.href = "index.html";
+    }
+    // ======================== FIN DEL CAMBIO =======================
+  }
 });

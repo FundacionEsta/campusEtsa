@@ -1,60 +1,90 @@
-const loggedUser = localStorage.getItem("loggedUser");
-const loginBtn = document.getElementById("loginboton");
-const userMenu = document.getElementById("userMenu");
-const logoutBtn = document.getElementById("logoutBtn");
+document.addEventListener('DOMContentLoaded', () => {
 
-if (loginBtn) {
-  if (loggedUser) {
-    loginBtn.textContent = "👤 " + loggedUser;
-    loginBtn.style.backgroundColor = "#d6ff41";
-    loginBtn.style.color = "#5d740cff";
+    // --- 1. OBTENER ELEMENTOS Y DATOS DEL USUARIO ---
+    const loggedUser = localStorage.getItem("loggedUser");
+    const userRole = localStorage.getItem('userRole');
 
-    // Mostrar/ocultar menú al hacer click
-    loginBtn.onclick = () => {
-      userMenu.style.display =
-        userMenu.style.display === "block" ? "none" : "block";
-    };
+    const loginBtn = document.getElementById("loginboton");
+    const userMenu = document.getElementById("userMenu");
+    const logoutBtn = document.getElementById("logoutBtn");
+    const inscribirseBtn = document.getElementById("inscribirseBtn");
 
-    // Acción de cerrar sesión
-    if (logoutBtn) {
-      logoutBtn.onclick = () => {
-        localStorage.removeItem("loggedUser");
-        alert("Sesión cerrada");
-        window.location.reload();
-      };
+
+    // --- 2. LÓGICA PARA MOSTRAR ENLACES SEGÚN EL ROL ---
+
+    // Lógica para rol MAESTRO
+    const maestroLink = document.getElementById('nav-maestro-link');
+    if (maestroLink && userRole === 'maestro') {
+        maestroLink.style.display = 'inline-block';
     }
-  } else {
-    loginBtn.onclick = () => {
-      window.location.href = "login.html";
-    };
-  }
-}
 
-// Cierra el menú si haces click fuera de él
-window.onclick = function (event) {
-  if (!event.target.matches("#loginboton")) {
-    userMenu.style.display = "none";
-  }
-};
-
-if (inscribirseBtn) {
-  inscribirseBtn.onclick = () => {
-    if (loggedUser) {
-      // Usuario logeado → redirigir a la página de inscripción
-      window.location.href = "inscrirecre.html";
-    } else {
-      // Usuario no logeado → redirigir a login
-      alert("Debes iniciar sesión primero");
-      window.location.href = "login.html";
+    // --- NUEVO: LÓGICA PARA MOSTRAR ENLACES DE ADMIN ---
+    const adminEditUsersLink = document.getElementById('admin-edit-users-link');
+    const adminEnrolledLink = document.getElementById('admin-enrolled-link');
+    
+    if (userRole === 'admin') {
+        if (adminEditUsersLink) {
+            adminEditUsersLink.style.display = 'inline-block';
+        }
+        if (adminEnrolledLink) {
+            adminEnrolledLink.style.display = 'inline-block';
+        }
     }
-  };
-}
-
-// Cierra el menú si haces click fuera de él
-window.onclick = function (event) {
-  if (!event.target.matches("#loginboton")) {
-    userMenu.style.display = "none";
-  }
-};
 
 
+    // --- 3. LÓGICA DEL BOTÓN DE LOGIN/USUARIO ---
+    if (loginBtn) {
+        if (loggedUser) {
+            // --- SI EL USUARIO HA INICIADO SESIÓN ---
+            loginBtn.textContent = `👤 ${loggedUser}`;
+            loginBtn.style.backgroundColor = "#d6ff41";
+            loginBtn.style.color = "#5d740cff";
+
+            // Mostrar/ocultar menú al hacer clic
+            loginBtn.addEventListener('click', (event) => {
+                event.stopPropagation(); // Evita que el clic se propague y cierre el menú inmediatamente
+                userMenu.style.display = userMenu.style.display === "block" ? "none" : "block";
+            });
+
+            // Acción de cerrar sesión
+            if (logoutBtn) {
+                logoutBtn.addEventListener('click', () => {
+                    localStorage.removeItem("loggedUser");
+                    localStorage.removeItem("userRole"); 
+                    alert("Sesión cerrada");
+                    window.location.reload();
+                });
+            }
+
+        } else {
+            // --- SI EL USUARIO NO HA INICIADO SESIÓN ---
+            loginBtn.addEventListener('click', () => {
+                window.location.href = "login.html";
+            });
+        }
+    }
+
+
+    // --- 4. LÓGICA DEL BOTÓN "INSCRIBIRSE" ---
+    if (inscribirseBtn) {
+        inscribirseBtn.addEventListener('click', () => {
+            if (loggedUser) {
+                window.location.href = "inscrirecre.html";
+            } else {
+                alert("Debes iniciar sesión primero");
+                window.location.href = "login.html";
+            }
+        });
+    }
+
+
+    // --- 5. CERRAR EL MENÚ AL HACER CLIC FUERA ---
+    window.addEventListener('click', (event) => {
+        if (userMenu && userMenu.style.display === 'block') {
+            if (!loginBtn.contains(event.target) && !userMenu.contains(event.target)) {
+                userMenu.style.display = "none";
+            }
+        }
+    });
+
+});

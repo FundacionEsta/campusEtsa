@@ -1,61 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="registro.css">
-    <title>Registros de Materias</title>
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="registro.css">
+    <title>Panel de Administración</title>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 <body>
 
-    <div class="card table-container" id="programacion">
-        <h2>Programación</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th>Usuario</th>
-                    <th>Nombre Completo</th>
-                    <th>Correo</th>
-                    <th>Rol</th>
-                    <th>Cédula</th>
-                    <th>Acciones</th>
-                </tr>
-            </thead>
-            <tbody id="tabla-usuarios-programacion"></tbody>
-        </table>
-    </div>
+    <header class="dashboard-header">
+        <h1 class="header-title">Panel de Administración de Cursos</h1>
+        <div class="user-actions">
+            <button id="user-name-btn" class="user-button"></button>
+            <button id="home-btn" class="home-button">Volver a Inicio</button>
+            <button id="censor-btn" class="censor-button">🙈 Ocultar Cédulas</button>
+        </div>
+    </header>
 
-    <div class="card table-container" id="recreacion">
-        <h2>Recreación</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th>Usuario</th>
-                    <th>Nombre Completo</th>
-                    <th>Correo</th>
-                    <th>Rol</th>
-                    <th>Cédula</th>
-                    <th>Acciones</th>
-                </tr>
-            </thead>
-            <tbody id="tabla-usuarios-recreacion"></tbody>
-        </table>
-    </div>
-    <body>
-    <h1>Panel de Administración de Cursos</h1>
+    <main class="container">
+        <div class="card table-container" id="programacion">
+            <h2>Programación</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Usuario</th>
+                        <th>Nombre Completo</th>
+                        <th>Correo</th>
+                        <th>Rol</th>
+                        <th>Cédula</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody id="tabla-usuarios-programacion"></tbody>
+            </table>
+        </div>
 
-    <button id="censor-btn" class="censor-button">🙈 Ocultar Cédulas</button>
+        <div class="card table-container" id="recreacion">
+            <h2>Recreación</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Usuario</th>
+                        <th>Nombre Completo</th>
+                        <th>Correo</th>
+                        <th>Rol</th>
+                        <th>Cédula</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody id="tabla-usuarios-recreacion"></tbody>
+            </table>
+        </div>
+    </main>
 
-    <div class="card table-container" id="programacion">
-        </div>
-    
-    <div class="card table-container" id="recreacion">
-        </div>
-    
- 
-    
-    <script src="registro.js" defer></script>
+    <script src="registro.js" defer></script>
 
 </body>
 </html>

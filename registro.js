@@ -6,11 +6,14 @@ const supabaseClient = createClient(
     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFsc3Vpd3hscnNxZ3VtamJ1b3prIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTU4NDIzMDEsImV4cCI6MjA3MTQxODMwMX0.xSnFcsfXGt1SRUee87sprQepocXC7baag1Sc2uhOkQk"
 );
 
-// --- NUEVO: Lógica para censurar ---
-let cedulasCensuradas = true; // El estado inicial es censurado
+// --- OBTENER ELEMENTOS DEL DOM ---
 const censorBtn = document.getElementById('censor-btn');
+const userNameBtn = document.getElementById('user-name-btn'); // NUEVO
+const homeBtn = document.getElementById('home-btn');           // NUEVO
 
-// Función para censurar un número, mostrando solo los últimos 4 dígitos
+// Lógica para censurar
+let cedulasCensuradas = true;
+
 function censurarCedula(cedula) {
     if (!cedula || cedula.length < 4) {
         return '****';
@@ -18,12 +21,11 @@ function censurarCedula(cedula) {
     return '****' + cedula.slice(-4);
 }
 
-// Función para actualizar la vista de todas las cédulas en las tablas
 function actualizarVistaCedulas() {
-    const celdasCedula = document.querySelectorAll('.cedula-cell'); // Busca todas las celdas con la clase especial
-    
+    const celdasCedula = document.querySelectorAll('.cedula-cell');
+
     celdasCedula.forEach(celda => {
-        const cedulaCompleta = celda.dataset.fullCedula; // Obtiene el número completo del atributo data-*
+        const cedulaCompleta = celda.dataset.fullCedula;
         if (cedulasCensuradas) {
             celda.textContent = censurarCedula(cedulaCompleta);
         } else {
@@ -31,25 +33,22 @@ function actualizarVistaCedulas() {
         }
     });
 
-    // Cambiar el texto del botón
     censorBtn.textContent = cedulasCensuradas ? '🙈 Ocultar Cédulas' : '🙉 Mostrar Cédulas';
 }
 
-// --- MODIFICADO: renderizarTabla ahora prepara las celdas para ser censuradas ---
 function renderizarTabla(tablaBodyId, datos) {
     const tablaBody = document.getElementById(tablaBodyId);
     if (!tablaBody) {
         console.error(`Error: No se encontró el elemento con el ID '${tablaBodyId}'`);
         return;
     }
-    
-    tablaBody.innerHTML = ''; // Limpiar la tabla antes de renderizar
+
+    tablaBody.innerHTML = '';
 
     datos.forEach(estudiante => {
         const fila = document.createElement('tr');
-        const cedulaOriginal = estudiante.cedula_id || ''; // Usamos la columna correcta: cedula_id
+        const cedulaOriginal = estudiante.cedula_id || '';
 
-        // MODIFICADO: La celda de la cédula ahora tiene una clase y un atributo data-*
         fila.innerHTML = `
             <td>${estudiante.nombre_usuario || ''}</td>
             <td>${estudiante.nombre_completo || ''}</td>
@@ -66,7 +65,7 @@ function renderizarTabla(tablaBodyId, datos) {
 
 async function obtenerYMostrarDatos(nombreTabla, tablaBodyId) {
     try {
-        const { data, error } = await supabaseClient.from(nombreTabla).select('*'); 
+        const { data, error } = await supabaseClient.from(nombreTabla).select('*');
 
         if (error) {
             console.error(`Error al obtener datos de la tabla '${nombreTabla}':`, error.message);
@@ -74,21 +73,53 @@ async function obtenerYMostrarDatos(nombreTabla, tablaBodyId) {
         }
 
         renderizarTabla(tablaBodyId, data);
-        actualizarVistaCedulas(); // Asegura que el estado de censura se aplique al cargar
+        actualizarVistaCedulas();
 
     } catch (error) {
         console.error('Ocurrió un error inesperado:', error.message);
     }
 }
 
+// --- EVENT LISTENERS PARA BOTONES DEL HEADER ---
+
 // Event listener para el botón de censura
 censorBtn.addEventListener('click', () => {
-    cedulasCensuradas = !cedulasCensuradas; // Invierte el estado (si es true, se vuelve false y viceversa)
-    actualizarVistaCedulas(); // Llama a la función que actualiza la vista
+    cedulasCensuradas = !cedulasCensuradas;
+    actualizarVistaCedulas();
 });
 
-// Cargar los datos cuando el DOM esté listo
+// Event listener para el botón de inicio (NUEVO)
+homeBtn.addEventListener('click', () => {
+    window.location.href = 'index.html';
+});
+
+
+// =================================================================
+// LÓGICA DE AUTORIZACIÓN Y CARGA DE PÁGINA
+// =================================================================
 document.addEventListener('DOMContentLoaded', () => {
-    obtenerYMostrarDatos('ia_no_programadores', 'tabla-usuarios-programacion');
-    obtenerYMostrarDatos('recreacion_con_proposito', 'tabla-usuarios-recreacion');
+    // 1. Obtenemos los datos del usuario guardados en localStorage.
+    const userRole = localStorage.getItem('userRole');
+    const loggedUser = localStorage.getItem('loggedUser'); // NUEVO
+
+    // 2. Verificamos si el rol es 'admin'.
+    if (userRole === 'admin') {
+        // 3. ¡Acceso concedido!
+        console.log('Acceso concedido para el administrador.');
+        
+        // 3.1 Mostramos el nombre de usuario en el header (NUEVO)
+        if (loggedUser) {
+            userNameBtn.textContent = `👤 ${loggedUser}`;
+        } else {
+            userNameBtn.textContent = 'Admin';
+        }
+
+        // 3.2 Cargamos los datos de las tablas
+        obtenerYMostrarDatos('ia_no_programadores', 'tabla-usuarios-programacion');
+        obtenerYMostrarDatos('recreacion_con_proposito', 'tabla-usuarios-recreacion');
+    } else {
+        // 4. ¡Acceso denegado!
+        alert('🚫 Acceso denegado. Esta página es solo para administradores.');
+        window.location.href = 'login.html';
+    }
 });
