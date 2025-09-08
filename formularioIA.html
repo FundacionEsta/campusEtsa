@@ -25,11 +25,29 @@
         <input type="text" id="nombreUsuario" readonly>
         <span class="icon">🆔</span>
       </div>
+        <div class="input-group">
+        <label for="cedula">Cédula:</label>
+        <input type="text" id="cedula" required placeholder="Escribe tu número de cédula">
+        <span class="icon">🆔</span>
+      </div>
+
+      <div class="input-group">
+        <label for="confirmarCedula">Confirmar Cédula:</label>
+        <input type="text" id="confirmarCedula" required placeholder="Repite tu número de cédula">
+        <span class="icon">✅</span>
+      </div>
 
       <div class="input-group">
         <label for="correo">Correo:</label>
         <input type="email" id="correo" required placeholder="Escribe tu correo para recibir info">
         <span class="icon">✉️</span>
+      </div>
+
+         <div class="input-group consent-group">
+        <input type="checkbox" id="consentimiento" name="consentimiento" required>
+        <label for="consentimiento">
+          Acepto y autorizo el tratamiento de mis datos personales para la finalidad descrita, de acuerdo con la <a href="politica-privacidad.html" target="_blank">Política de Tratamiento de Datos</a>.
+        </label>
       </div>
 
       <button type="submit">Inscribirme ahora</button>

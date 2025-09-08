@@ -30,6 +30,8 @@ const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 // Referencias a los elementos del DOM
 const nombreUsuarioInput = document.getElementById("nombreUsuario");
 const correoInput = document.getElementById("correo");
+const cedulaInput = document.getElementById("cedula");
+const confirmarCedulaInput = document.getElementById("confirmarCedula"); // <-- NUEVO: referencia al campo de confirmación
 const nombreCompletoInput = document.getElementById("nombreCompleto");
 const formInscripcion = document.getElementById("formInscripcion");
 const submitBtn = formInscripcion.querySelector("button[type='submit']");
@@ -46,64 +48,83 @@ if (loggedUser) {
 
 // Evento para guardar inscripción y enviar correo
 if (formInscripcion) {
-  formInscripcion.addEventListener("submit", async (e) => {
-    e.preventDefault();
+  formInscripcion.addEventListener("submit", async (e) => {
+    e.preventDefault();
 
-    submitBtn.disabled = true;
-    submitBtn.textContent = 'Procesando...';
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Procesando...';
 
-    const nombreCompleto = nombreCompletoInput.value.trim();
-    const nombreUsuario = nombreUsuarioInput.value.trim();
-    const correo = correoInput.value.trim();
+    const nombreCompleto = nombreCompletoInput.value.trim();
+    const nombreUsuario = nombreUsuarioInput.value.trim();
+    const correo = correoInput.value.trim();
+    const cedula = cedulaInput.value.trim();
+    const confirmarCedula = confirmarCedulaInput.value.trim();
 
-    if (!nombreCompleto || !nombreUsuario || !correo) {
-      alert("Por favor completa todos los campos.");
-      submitBtn.disabled = false;
-      submitBtn.textContent = 'Inscribirme ahora';
-      return;
-    }
+    // --- Validación de campos (sin cambios) ---
+    if (!nombreCompleto || !nombreUsuario || !correo || !cedula) {
+      alert("Por favor completa todos los campos.");
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Inscribirme ahora';
+      return;
+    } 
+    
+    if (cedula !== confirmarCedula) {
+      alert("Los números de cédula no coinciden. Por favor, verifica.");
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Inscribirme ahora';
+      return;
+    }
 
-    try {
-      // Step 1: Find the user's ID in the 'usuarios' table
-      const { data: userData, error: userError } = await supabaseClient
-        .from('usuarios')
-        .select('id')
-        .eq('usuario', nombreUsuario)
-        .single();
+    try {
+      // 1. Buscar el ID del usuario
+      const { data: userData, error: userError } = await supabaseClient
+        .from('usuarios')
+        .select('id')
+        .eq('usuario', nombreUsuario)
+        .single();
 
-      if (userError || !userData) {
-        throw new Error("No se pudo encontrar el ID del usuario.");
-      }
+      if (userError || !userData) {
+        // Si no se encuentra el usuario, lanza un error específico.
+        throw new Error("No se pudo encontrar el usuario. Asegúrate de haber iniciado sesión correctamente.");
+      }
 
-      const estudianteId = userData.id;
+      const estudianteId = userData.id;
 
-      // Step 2: Insert the enrollment with the student's ID
-      const { data: inscripcionData, error: inscripcionError } = await supabaseClient
-        .from("ia_no_programadores")
-        .insert([{
-          nombre_completo: nombreCompleto,
-          nombre_usuario: nombreUsuario,
-          correo: correo,
-          estudiante_id: estudianteId,
-          curso_nombre: "IA PARA NO PROGRAMADORES"
-          // This is where the ID is inserted
-        }]);
+      // 2. Insertar la inscripción
+      const { data: inscripcionData, error: inscripcionError } = await supabaseClient
+        .from("ia_no_programadores")
+        .insert([{
+          nombre_completo: nombreCompleto,
+          nombre_usuario: nombreUsuario,
+          correo: correo,
+          cedula_id: cedula, 
+          estudiante_id: estudianteId,
+          curso_nombre: "IA PARA NO PROGRAMADORES"
+        }]);
 
-      if (inscripcionError) throw inscripcionError;
+      if (inscripcionError) {
+        // Manejo de error de duplicación (violación de restricción única)
+        if (inscripcionError.code === "23505") {
+          throw new Error("Ya estás inscrito en este curso.");
+        }
+        throw inscripcionError; // Relanzar otros errores de inserción
+      }
 
-      alert("¡Inscripción guardada correctamente!");
+      alert("¡Inscripción guardada correctamente!");
 
-      // Step 3: Send confirmation email (ONLY if the save was successful)
-      await enviarCorreo(nombreCompleto, correo);
+      // 3. Enviar correo de confirmación
+      await enviarCorreo(nombreCompleto, correo);
 
-      // Step 4: Redirect the user
-      window.location.href = "IA.html";
+      // 4. Redirigir al usuario
+      window.location.href = "IA.html";
 
-    } catch (err) {
-      console.error("Error:", err.message);
-      alert("Ocurrió un error. El usuario ya podría estar registrado o hubo un problema al obtener su ID.");
-      submitBtn.disabled = false;
-      submitBtn.textContent = 'Inscribirme ahora';
-    }
-  });
+    } catch (err) {
+      console.error("Error:", err);
+      // Mostrar el mensaje de error específico al usuario.
+      // Si el error no es del tipo 'Error', se muestra un mensaje genérico.
+      alert(err.message || "Ocurrió un error inesperado. Por favor, intenta de nuevo.");
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Inscribirme ahora';
+    }
+  });
 }
