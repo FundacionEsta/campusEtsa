@@ -1,3 +1,7 @@
+   (function(){
+      emailjs.init("Q7HrpRuuL4kdUiszC"); // tu clave pública
+   })();
+   
 async function enviarCorreo(nombreCompleto, correo) {
   try {
     const templateParams = {

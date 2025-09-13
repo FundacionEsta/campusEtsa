@@ -3,6 +3,7 @@ body {
     margin: 0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background: #ffffff;
+    background-image: url('fondoprueba.png');
     color: #333;
 }
 

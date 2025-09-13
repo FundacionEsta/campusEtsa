@@ -7,6 +7,43 @@ body {
     color: black;
 }
 
+    
+#loginboton {
+    background: linear-gradient(90deg, #d5ff3f, #606b00);
+    color: black;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+#loginboton:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+}
+.dropdown1-menu {
+    display: none;
+    position: absolute;
+    top: 110%;
+    right: 0;
+    background-color: white;
+    min-width: 180px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+    border-radius: 12px;
+    padding: 10px;
+    z-index: 100;
+}
+.dropdown1-menu a {
+    display: block;
+    padding: 10px 15px;
+    color: black;
+}
+.dropdown1-menu a:hover {
+    background-color: #d5ff3f;
+}
+.dropdown { display: none; }
+
 /* --- Header --- */
 header {
     background: white;
@@ -34,6 +71,19 @@ header {
 .logo img {
     height: 45px;
 }
+
+nav {
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0px 30px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    height: 60px;
+}
 nav a {
     text-decoration: none;
     color: #606b00;
@@ -49,39 +99,22 @@ nav a:hover {
 .header-right {
     position: relative;
 }
-#loginboton {
-    background: linear-gradient(90deg, #d5ff3f, #606b00);
-    color: black;
+
+nav .buttons {
+    display: flex;
+    gap: 12px;
+}
+nav .buttons button {
     border: none;
-    padding: 10px 25px;
     border-radius: 25px;
+    padding: 10px 22px;
     cursor: pointer;
     font-weight: bold;
     transition: all 0.3s ease;
 }
-#loginboton:hover {
-    transform: scale(1.05);
-    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
-}
-.dropdown-menu {
-    display: none;
-    position: absolute;
-    top: 110%;
-    right: 0;
-    background-color: white;
-    min-width: 180px;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-    border-radius: 12px;
-    padding: 10px;
-    z-index: 100;
-}
-.dropdown-menu a {
-    display: block;
-    padding: 10px 15px;
-    color: black;
-}
-.dropdown-menu a:hover {
-    background-color: #d5ff3f;
+nav .buttons button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 /* --- Main Content --- */

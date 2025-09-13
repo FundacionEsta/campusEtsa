@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=0.57">
     <title>Campus ETSA - Diseño Mejorado</title>
+    <link rel="icon" type="image/png" href="favicon.ico">
     <link rel="stylesheet" href="nuestrasofertas.css">
 </head>
 <body>
@@ -13,7 +14,11 @@
         <div class="header-left">
             <div class="logo">
                 <img src="logomdi.png" alt="Logo ETSA">
-                <span>Fundación ETSA</span>
+                <span style="font-family: 'Playfair Display', serif;
+                   font-size: 1em;
+                   color: #000000;">
+        <b>ASOCIACION ETSA</b>
+      </span>
             </div>
             <nav>
                 <a href="index.html">Inicio</a>
@@ -22,16 +27,16 @@
                 <a href="#Dipomados">Diplomados</a>
                 <a href="#Cursos">Cursos</a>
                 <a href="index.html">¿Qué Somos?</a>
-            </nav>
+            
         </div>
-        <div class="header-right">
-            <button id="loginboton">Iniciar sesión</button>
-            <div id="userMenu" class="dropdown-menu">
-                <a href="#">Mi Perfil</a>
-                <a href="index.html">ir al inicio web</a>
-                <a href="#" id="logoutBtn">Cerrar sesión</a>
-            </div>
+         <div class="header-right">
+    <button id="loginboton">Iniciar sesión</button>
+    <div id="userMenu" class="dropdown1-menu">
+      <a href="index.html">Ir al inicio web</a>
+      <a href="#" id="logoutBtn">Cerrar sesión</a>
+    </div>
         </div>
+        </nav>
     </header>
 
      <h1 class="section-title">Nuestras ofertas</h1>
@@ -135,6 +140,7 @@
 
     <script src="auth.js"></script>
     <script src="ESTAscript.js"></script>
+    <script src="logicainicial.js"></script>
     <script src="nuestrasofertas.js"></script>
     
      

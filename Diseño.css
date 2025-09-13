@@ -1,10 +1,66 @@
 body {
       margin: 0;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: white;
+      background-image: url('fondoprueba.png');
       color: #333;
     }
 
+        a {
+      color: rgb(158, 158, 158);              /* Color del texto */
+      text-decoration: none;     /* Sin subrayado */
+    }
+    a:visited,
+    a:active,
+    a:hover {
+      color: black;              /* Siempre negro */
+    }
+
+    /* Estilo del botón */
+    button {
+      background-color: #f0f0f0;
+      border: 1px solid #ccc;
+      padding: 10px 15px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+
+    
+#loginboton {
+    background: linear-gradient(90deg, #d5ff3f, #606b00);
+    color: black;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+#loginboton:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+}
+.dropdown1-menu {
+    display: none;
+    position: absolute;
+    top: 110%;
+    right: 0;
+    background-color: white;
+    min-width: 180px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+    border-radius: 12px;
+    padding: 10px;
+    z-index: 100;
+}
+.dropdown1-menu a {
+    display: block;
+    padding: 10px 15px;
+    color: black;
+}
+.dropdown1-menu a:hover {
+    background-color: #d5ff3f;
+}
+.dropdown { display: none; }
     /* --- Header --- */
     header {
       background: linear-gradient(90deg, #d5ff3f,#606b00);
@@ -245,6 +301,7 @@ body {
     .facultad-card[data-faculty="Inversiones y Finanzas"] { background: linear-gradient(135deg,#d6ff41, #606b00); }
     .facultad-card[data-faculty="Marketing y Comunicación"] { background: linear-gradient(135deg,#d6ff41, #606b00); }
     .facultad-card[data-faculty="Programación y Software"] { background: linear-gradient(135deg,#d6ff41, #606b00); }
+    .facultad-card[data-faculty="Teologia y Espiritualidad"] { background: linear-gradient(135deg,#d6ff41, #606b00); }
     .facultad-card[data-faculty="Idiomas"] { background: linear-gradient(135deg,#d6ff41, #606b00); color: #ffffff; }
     .facultad-card[data-faculty="Idiomas"] svg { fill: #555; }
 

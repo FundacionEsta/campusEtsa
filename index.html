@@ -4,8 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=0.57">
   <title>Asociación Etsa - Diseño Mejorado</title>
+  <link rel="icon" type="image/png" href="favicon.ico">
   <link rel="stylesheet" href="Diseño.css">
   <link rel="stylesheet" href="Diseño2.css">
+   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
 </head>
 <body>
 
@@ -14,18 +16,27 @@
     <button>Saber más</button>
   </header>
 
-  <nav>
-    <div class="left">
-      <div class="logo">
-        <img src="logomdi.png" alt="Logo">
-        <span><b>ASOCIACION ETSA</b></span>
-      </div>
+<nav>
+  <div class="left">
+    <div class="logo">
+      <img src="logomdi.png" alt="Logo">
+      <span style="font-family: 'Playfair Display', serif;
+                   font-size: 2em;
+                   color: #000000;">
+        <b>ASOCIACION ETSA</b>
+      </span>
     </div>
-    <div class="buttons">
-      <button class="btn-info">Solicitar información</button>
-      <button class="btn-login" id="loginboton">Iniciar sesión</button>
+  </div>
+
+  <div class="header-right">
+    <button id="loginboton">Iniciar sesión</button>
+    <div id="userMenu" class="dropdown1-menu">
+      <a href="index.html">Ir al inicio web</a>
+      <a href="#" id="logoutBtn">Cerrar sesión</a>
     </div>
-  </nav>
+  </div>
+</nav>
+
 
   <div class="menu">
     <a href="#cursos">Cursos</a>
@@ -121,6 +132,10 @@
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/></svg>
         <span>Inversiones y Finanzas</span>
       </div>
+       <div class="facultad-card" data-faculty="Teologia y Espiritualidad">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/></svg>
+        <span>Teologia y Espiritualidad</span>
+      </div>
        <div class="facultad-card" data-faculty="Marketing y Comunicación">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/></svg>
         <span>Marketing y Comunicación</span>
@@ -151,7 +166,7 @@
         </div>
       </div>
       <div class="curso-card" data-faculty="Programación y Software" data-type="curso">
-        <img src="https://images.unsplash.com/photo-1550439062-609e1531270e?w=500&q=80" alt="Curso Python">
+        <img src="IA.png" alt="Curso Python">
         <div class="curso-card-content">
           <h3>Curso IA para no programadores</h3>
           <p>Domina la IA en su totalidad </p>
@@ -167,7 +182,7 @@
         </div>
       </div>
       <div class="curso-card" data-faculty="Idiomas" data-type="curso">
-        <img src="https://images.unsplash.com/photo-1521791055328-2d741b250165?w=500&q=80" alt="Curso Inglés">
+        <img src="ingles.png" alt="Curso Inglés">
         <div class="curso-card-content">
           <h3>Curso de Inglés B2</h3>
           <p>Mejora tu nivel de inglés para estudios, trabajo y viajes.</p>
@@ -243,11 +258,11 @@
     <div class="nuevo-curso-tag">NUEVO CURSO!</div>
     <div class="curso-content">
         <div class="curso-text">
-            <h2>Elaboración de productos de limpieza ecológicos y biodegradables</h2>
-            <button>Más información aquí</button>
+            <h2>Recreacion con proposito</h2>
+            <button><a href="recreacion.html" style="text-decoration: none; color:antiquewhite;">Más información aquí</a></button>
         </div>
         <div class="curso-image">
-            <img src="limpieza.png" alt="Productos de limpieza">
+            <img src="recreacion.png" alt="Recreacion">
         </div>
     </div>
 </section>

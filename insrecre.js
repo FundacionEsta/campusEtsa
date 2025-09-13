@@ -1,4 +1,6 @@
-// --- Conexión a Supabase (sin cambios) ---
+(function(){
+      emailjs.init("Q7HrpRuuL4kdUiszC"); // tu clave pública
+   })();// --- Conexión a Supabase (sin cambios) ---
 const SUPABASE_URL = "https://qlsuiwxlrsqgumjbuozk.supabase.co"; 
 const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFsc3Vpd3hscnNxZ3VtamJ1b3prIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTU4NDIzMDEsImV4cCI6MjA3MTQxODMwMX0.xSnFcsfXGt1SRUee87sprQepocXC7baag1Sc2uhOkQk"; 
 const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);

@@ -250,22 +250,24 @@ footer p {
     margin-top: 20px;
     opacity: 0.6;
 }
-.whatsapp-float {
-    position: fixed;
-    bottom: 25px;
-    right: 25px;
-    background: #d5ff3f;
-    border-radius: 50%;
-    padding: 12px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-    z-index: 1000;
-    transition: transform 0.3s ease;
-}
-.whatsapp-float img {
-    width: 40px;
-    height: 40px;
-    display: block;
-}
-.whatsapp-float:hover {
-    transform: scale(1.1) rotate(10deg);
-}
+/* --- Footer --- */
+/* --- WhatsApp Button --- */
+    .whatsapp {
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      background: #25d366;
+      border-radius: 50%;
+      padding: 12px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+      z-index: 1000;
+      transition: transform 0.3s ease;
+    }
+    .whatsapp img {
+      width: 40px;
+      height: 40px;
+      display: block;
+    }
+    .whatsapp:hover {
+      transform: scale(1.1) rotate(10deg);
+    }

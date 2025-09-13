@@ -1,0 +1,137 @@
+ @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #fdf2f8 0%, #e0f7fa 100%);
+      margin: 0;
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      box-sizing: border-box;
+    }
+
+    .container {
+      background-color: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(10px);
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      width: 100%;
+      max-width: 420px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .header-text {
+        text-align: center;
+        margin-bottom: 30px;
+    }
+    
+    .header-text h2 {
+      margin: 0;
+      font-size: 1.8em;
+      color: #333;
+      font-weight: 700;
+    }
+
+    .header-text p {
+        margin-top: 5px;
+        color: #666;
+    }
+
+    .input-group {
+        position: relative;
+        margin-bottom: 25px;
+    }
+    
+    .input-group label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 500;
+      color: #555;
+      font-size: 0.9em;
+    }
+
+    .input-group input {
+      width: 100%;
+      padding: 12px 15px 12px 45px; /* Space for icon */
+      border-radius: 12px;
+      border: 1px solid #ddd;
+      font-size: 1em;
+      transition: all 0.3s ease;
+      box-sizing: border-box;
+    }
+
+    .input-group input:focus {
+        border-color: #89cff0;
+        box-shadow: 0 0 0 3px rgba(137, 207, 240, 0.3);
+        outline: none;
+    }
+
+    .consent-group {
+  display: flex;
+  align-items: flex-start; /* Alinea el checkbox y el texto */
+  margin-bottom: 20px;
+}
+
+.consent-group input[type="checkbox"] {
+  margin-top: 3px; /* Ajusta la posición vertical del checkbox */
+  margin-right: 10px;
+  width: auto; /* Anula el 100% de ancho de otros inputs */
+  flex-shrink: 0; /* Evita que el checkbox se encoja */
+}
+
+.consent-group label {
+  font-size: 0.85em; /* Texto un poco más pequeño */
+  color: #555;
+  text-align: left;
+  line-height: 1.4;
+}
+
+.consent-group a {
+  color: #007bff;
+  text-decoration: none;
+  font-weight: 600; 
+}
+
+.consent-group a:hover {
+  text-decoration: underline;
+}
+    .input-group .icon {
+        position: absolute;
+        left: 15px;
+        top: 50%;
+        transform: translateY(25%);
+        color: #aaa;
+        transition: color 0.3s ease;
+    }
+
+    .input-group input:focus + .icon {
+        color: #89cff0;
+    }
+
+    input:read-only {
+      background-color: #f0f0f0;
+      color: #555;
+      cursor: not-allowed;
+    }
+
+    button[type="submit"] {
+      width: 100%;
+      padding: 15px;
+      background: linear-gradient(90deg, #89cff0, #f4c2c2);
+      border: none;
+      color: white;
+      font-size: 1.1em;
+      font-weight: 600;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
+    button[type="submit"]:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(137, 207, 240, 0.4);
+    }
